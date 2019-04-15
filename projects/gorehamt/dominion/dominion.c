@@ -649,7 +649,7 @@ int getCost(int cardNumber)
 * Function Name: adventurerFunc
 * Function Description: Handles the play of the adventurer card
 ********************************************************************************************************/
-int adventurerFunc(struct gameState *state, int *drawntreasure, int currentPlayer, int *cardDrawn, int *drawnTreasure, int *z, int temphand[]){
+int adventurerFunc(struct gameState *state, int *drawntreasure, int currentPlayer, int *cardDrawn, int *z, int temphand[]){
   while(*drawntreasure<2){
 	  if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
 	    shuffle(currentPlayer, state);
@@ -730,7 +730,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 
       //return 0;
 	*/		
-      return adventurerFunc(state, &drawntreasure, currentPlayer, &cardDrawn, &drawntreasure, &z, temphand);
+      return adventurerFunc(state, &drawntreasure, currentPlayer, &cardDrawn, &z, temphand);
 
     case council_room:
       //+4 Cards
