@@ -679,7 +679,7 @@ int adventurerFunc(struct gameState *state, int *drawntreasure, int currentPlaye
 * Function Name: smithyFunc
 * Function Description: Handles the play of the smithy card
 ********************************************************************************************************/
-int smithyFunc(struct gamestate * state, int currentPlayer, int handPos){
+int smithyFunc(struct gameState * state, int currentPlayer, int handPos){
   
   //+3 Cards
   int i;
