@@ -781,7 +781,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 {
   int i;
   int j;
-  int k;
+  //int k; //cutpurse was the only branch of the switch that used k
   int x;
   int index;
   int currentPlayer = whoseTurn(state);
