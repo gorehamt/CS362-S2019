@@ -659,11 +659,11 @@ int adventurerFunc(struct gameState *state, int *drawntreasure, int currentPlaye
 	  *cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
 	  
     if (*cardDrawn == copper || *cardDrawn == silver || *cardDrawn == gold)
-	    (*drawntreasure)++;
+	    *drawntreasure++;
 	  else{
 	    temphand[*z]=*cardDrawn;
 	    state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
-	    (*z)++;
+	    *z++;
 	  }
   }
 
@@ -683,7 +683,7 @@ int smithyFunc(struct gameState * state, int currentPlayer, int handPos){
   
   //+3 Cards
   int i;
-  for (i = 0; i < 3; i++){
+  for (i = 0; i <= 3; i++){
 	  drawCard(currentPlayer, state);
 	}
 		
@@ -710,9 +710,7 @@ int councilRoomFunc(struct gameState * state, int currentPlayer, int handPos){
 			
   //Each other player draws a card
   for (i = 0; i < state->numPlayers; i++){
-	  if ( i != currentPlayer ){
 	      drawCard(i, state);
-	    }
 	}
 			
   //put played card in played card pile
@@ -756,7 +754,6 @@ int cutpurseFunc(struct gameState * state, int currentPlayer, int handPos){
 	    for (j = 0; j < state->handCount[i]; j++){
 		    if (state->hand[i][j] == copper){
 		      discardCard(j, i, state, 0);
-		      break;
 		    }
 		    
         if (j == state->handCount[i]){
