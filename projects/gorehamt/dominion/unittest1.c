@@ -50,7 +50,7 @@ int main(){
 
     /*Test 3: Game is not over because provice supply > 0 and < 3 supply piles have 0 cards */
     state.supplyCount[province] = 5;
-    state.supplyCount[7] = 0; //adventurer
+    state.supplyCount[7] = 4; //adventurer
     state.supplyCount[17] = 0; //minion
     state.supplyCount[22] = 0; //embargo
 
