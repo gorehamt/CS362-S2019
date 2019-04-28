@@ -28,15 +28,16 @@ int main(){
     int bonus = -1;
     state.hand[currentPlayer][handPos] = council_room;
 
-    //get current hand size
+    //get current hand size, number of buys
     int p1HandSizeBefore = state.handCount[currentPlayer];
+    int p1NumBuysBefore = state.numBuys[currentPlayer];
 
     //play council_room card
     cardEffect(council_room, -1, -1, -1, &state, handPos, &bonus);
 
-    //get hand size after card is played
+    //get hand size, num of buys after card is played
     int p1HandSizeAfter = state.handCount[currentPlayer];
-
+    int p1NumBuysAfter = state.numBuys[currentPlayer];
 
     printf("\n------Testing Council Room Card Implementation------\n");
 
@@ -50,8 +51,25 @@ int main(){
         printf("\tTEST FAILED: Hand size before was % d, and hand size after was % d\n", p1HandSizeBefore, p1HandSizeAfter);
     }
 
-    /*Test 2: Verify that the current playeer receives exactly one more buy*/
+    /*Test 2: Verify that the current player receives exactly one more buy*/
+    printf("\nTesting that current player's number of buys increases by exactly 1 after council room card is played.\n");
+    if (p1NumBuysAfter == p1NumBuysBefore + 1){
+        printf("\tTEST SUCCESSFULLY COMPLETED\n");
+    }
+    else{
+        printf("\tTEST FAILED: Number of buys before was % d, and number of buys after was % d\n", p1NumBuysBefore, p1NumBuysAfter);
+    }
 
+
+    /*Test 3: Verify that the other players receives exactly one more card*/
+ /*   printf("\nTesting that other player's number of cards increases by exactly 1 after council room card is played.\n");
+    if (p1NumBuysAfter == p1NumBuysBefore + 1){
+        printf("\tTEST SUCCESSFULLY COMPLETED\n");
+    }
+    else{
+        printf("\tTEST FAILED: Number of buys before was % d, and number of buys after was % d\n", p1NumBuysBefore, p1NumBuysAfter);
+    }
+*/
     return 0;
 }
 
