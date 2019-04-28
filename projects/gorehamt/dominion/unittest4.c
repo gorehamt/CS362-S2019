@@ -135,7 +135,7 @@ int main(){
     int otherPHandCountAfter2 = state2.handCount[1];
     
     /*Test 4: If player has copper in hand, verify that there are two less cards in hand after the cutpurse card is played*/
-    printf("\nTesting that there is are still the same number of cards in the other player's hand if copper is NOT present in the second player's hand and the cutpurse card is played.\n");
+    printf("\nTesting that there are still the same number of cards in the other player's hand if copper is NOT present in the second player's hand and the cutpurse card is played.\n");
     if (otherPHandCountAfter2 == otherPHandCountBefore2){
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
     }
