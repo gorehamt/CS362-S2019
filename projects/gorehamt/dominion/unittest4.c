@@ -122,7 +122,7 @@ int main(){
     //get current players coins, and other players hand count and discard count before
     //int currentPCoinsBefore2 = state2.coins;
     int otherPHandCountBefore2 = state2.handCount[1];
-    int otherPDiscardCountBefore2 = state2.discardCount[1];
+    //int otherPDiscardCountBefore2 = state2.discardCount[1];
 
     //play cutpurse card with state 1
     cardEffect(cutpurse, -1, -1, -1, &state2, handPos, &bonus);
@@ -130,7 +130,7 @@ int main(){
     //get current players coins, and other players hand count and discard count afteer
     //int currentPCoinsAfter2 = state2.coins;
     int otherPHandCountAfter2 = state2.handCount[1];
-    int otherPDiscardCountAfter2 = state2.discardCount[1];
+    //int otherPDiscardCountAfter2 = state2.discardCount[1];
 
     /*Test 4: If player has copper in hand, verify that there are two less cards in hand after the cutpurse card is played*/
     printf("\nTesting that there is are still the same number of cards in the other player's hand if copper is NOT present in the second player's hand and the cutpurse card is played.\n");
