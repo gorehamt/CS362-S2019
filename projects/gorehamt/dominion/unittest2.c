@@ -120,7 +120,7 @@ int main(){
 
 
     /*Test 6: Verify no state changes to victory or kingdom card piles*/
-    printf("\nTesting that there are no state changes to the victory and kingdom card piles.\n")
+    printf("\nTesting that there are no state changes to the victory and kingdom card piles.\n");
     if (checkSupplyCountSame(&state, kingdomCards)){
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
     }
