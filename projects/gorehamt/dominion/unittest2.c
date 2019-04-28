@@ -12,6 +12,31 @@
 #include <string.h>
 #include <stdio.h>
 
+/*****************************************************************************************************************************************
+ * Function name: checkSupplyCountSame
+ * Description: This function returns 1 if there is a change to the supply count for one of the kingdom cards or one of the victory cards. 
+ * It returns 0 if there are no changes.
+******************************************************************************************************************************************/
+int checkSupplyCountSame (struct gameState *state, int kingdomCards[10]){
+    //NOTE: initialize game sets sets curse = 10, estate = 8, duchy = 8, provice = 8, copper = 46, silver = 40, gold = 30, all kingdom cards = 8
+
+    //verify the kingdomCards counts have not changed
+    int i;
+    for (i = 0; i < 10; i++){
+        if(state->supplyCount[kingdomCards[i]] != 8){
+            return 1; //state of a kingdom card changed
+        }
+    }
+
+    //verify the victory card piles have not changed
+    if ((state->supplyCount[estate] != 8) || (state->supplyCount[duchy] != 8) || (state->supplyCount[province] != 8)){
+        return 1;
+    }
+
+    return 0;
+}
+
+
 int main(){
 
     //setup game
@@ -20,7 +45,7 @@ int main(){
     int seed = 1000;
     int kingdomCards[10] = {adventurer, great_hall, village, minion, steward, cutpurse, embargo, tribute, smithy, council_room};    
 
-    initializeGame(numPlayers, kingdomCards, seed, &state);
+    initializeGame(numPlayers, kingdomCards, seed, &state); //sets curse = 10, estate = 8, duchy = 8, provice = 8, copper = 46, silver = 40, gold = 30, all kingdom cards = 8
 
     //add council_room card to first player's hand at position 2
     int currentPlayer = 0;
@@ -95,15 +120,14 @@ int main(){
 
 
     /*Test 6: Verify no state changes to victory or kingdom card piles*/
-/*    printf("\nTesting that there are no state changes to the victory and kingdom card piles.\n")
-    if (otherPDeckCountAfter == otherPDeckCountBefore - 1){
+    printf("\nTesting that there are no state changes to the victory and kingdom card piles.\n")
+    if (checkSupplyCountSame(&state, kingdomCards)){
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
     }
     else{
-        printf("\tTEST FAILED: Deck count before was %d, and deck count after was %d\n", otherPDeckCountBefore, otherPDeckCountAfter);
+        printf("\tTEST FAILED: The supply count has changed for one or more kingdom cards or victory cards\n");
     }
 
-*/
     return 0;
 }
 
