@@ -23,33 +23,34 @@ int main(){
     initializeGame(numPlayers, kingdomCards, seed, &state);
 
     //add council_room card to first player's hand at position 2
-    int player = 0;
+    int currentPlayer = 0;
     int handPos = 2; 
     int bonus = -1;
-    state.hand[player][handPos] = council_room;
+    state.hand[currentPlayer][handPos] = council_room;
 
-    int handSize = state.handCount[player];
-    printf("Size of player's hand: %d", handSize);
+    //get current hand size
+    int p1HandSizeBefore = state.handCount[currentPlayer];
 
+    //play council_room card
     cardEffect(council_room, -1, -1, -1, &state, handPos, &bonus);
 
-    handSize = state.handCount[player];
-    printf("Size of player's hand after cardEffect: %d", handSize);
+    //get hand size after card is played
+    int p1HandSizeAfter = state.handCount[currentPlayer];
+
 
     printf("\n------Testing Council Room Card Implementation------\n");
 
     /*Test 1: Verify that the current player receives exactly four cards.*/
 
-/*
-    printf("\nTesting when deck count = 0, hand count = 0, and discard count = 10.\n");
-    if ((fullDeckCount(player, card, &state)) == 10){
+    printf("\nTesting that current player's hand size increases by exactly 4 cards after council room card is played.\n");
+    if ((p1HandSizeAfter == p1HandSizeBefore + 4){
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
     }
     else{
-        printf("\tTEST FAILED: Full deck count was not equal to 10.\n");
+        printf("\tTEST FAILED: Hand size before was % d, and hand size after was % d\n", p1HandSizeBefore, p1HandSizeAfter);
     }
 
-  */ 
+    /*Test 2: Verify that the current playeer receives exactly one more buy*/
 
     return 0;
 }
