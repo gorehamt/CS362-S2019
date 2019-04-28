@@ -90,7 +90,7 @@ int main(){
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
     }
     else{
-        printf("\tTEST FAILED: Number of actions before was %d, and number of actions after was %d\n", currentPNumBuysBefore, currentPNumBuysAfter);
+        printf("\tTEST FAILED: Number of actions before was %d, and number of actions after was %d\n", currentPNumActionsBefore, currentPNumActionsAfter);
     }
 
     /*Test 3: Verify that extra card comes from current player's pile*/
