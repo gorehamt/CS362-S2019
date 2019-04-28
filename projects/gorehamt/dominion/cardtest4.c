@@ -68,7 +68,7 @@ int main(){
     int otherPDiscardCountBefore1 = state1.discardCount[1];
 
     //play steward card with choice 1 of drawing two cards with state 1
-    cardEffect(steward, 1, -1, -1, &state, handPos, &bonus);
+    cardEffect(steward, 1, -1, -1, &state1, handPos, &bonus);
 
     //get hand size, num of buys, etc. after card is played with state 1
     int currentPHandSizeAfter1 = state1.handCount[currentPlayer];
@@ -123,7 +123,7 @@ int main(){
     int otherPDiscardCountBefore2 = state2.discardCount[1];
 
     //play steward card with choice 1 of drawing two cards with state 2
-    cardEffect(steward, 2, -1, -1, &state, handPos, &bonus);
+    cardEffect(steward, 2, -1, -1, &state2, handPos, &bonus);
 
     //get hand size, num of buys, etc. after card is played with state 2
     //int currentPHandSizeAfter = state2.handCount[currentPlayer];
@@ -169,7 +169,7 @@ int main(){
     int otherPDiscardCountBefore3 = state3.discardCount[1];
 
     //play steward card with choice 1 of drawing two cards with state 3
-    cardEffect(steward, 3, 0, 1, &state, handPos, &bonus);
+    cardEffect(steward, 3, 0, 1, &state3, handPos, &bonus);
 
     //get hand size, num of buys, etc. after card is played with state 3
     int currentPHandSizeAfter3 = state3.handCount[currentPlayer];
@@ -213,18 +213,6 @@ int main(){
     else{
         printf("\tTEST FAILED: The supply count has changed for one or more kingdom cards or victory cards\n");
     }
-
-
-
-
-
-
-
-    
-
-    
-
-   
 
     return 0;
 }
