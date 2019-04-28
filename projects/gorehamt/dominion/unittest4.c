@@ -50,6 +50,16 @@ int main(){
     initializeGame(numPlayers, kingdomCards, seed, &state1); //sets curse = 10, estate = 8, duchy = 8, provice = 8, copper = 46, silver = 40, gold = 30, all kingdom cards = 8
     initializeGame(numPlayers, kingdomCards, seed, &state2);
 
+    //Moved draw cards for second player
+    int it;
+    for (it = 0; it < 5; it++){
+        drawCard(1, &state1);
+    }
+
+    for (it = 0; it < 5; it++){
+        drawCard(1, &state2);
+    }
+
     //add cutpurse card to first player's hand at position 2 of both game states
     int currentPlayer = 0;
     int handPos = 2; 
@@ -89,9 +99,9 @@ int main(){
         printf("\tTEST FAILED: Number of coins before was %d, and number of coins after was %d\n", currentPCoinsBefore1, currentPCoinsAfter1);
     }
 
-    /*Test 2: If player has copper in hand, verify that there are two less cards in hand after the cutpurse card is played*/
-    printf("\nTesting that there are two less cards in the other player's hand if copper is present in hand and cutpurse card is played (b/c discarded a copper and the cutpurse card).\n");
-    if (otherPHandCountAfter1 == otherPHandCountBefore1 - 2){
+    /*Test 2: If other player has copper in hand, verify that there is one less cards in hand after the cutpurse card is played (a copper is discarded)*/
+    printf("\nTesting that there is one less cards in the other player's hand if copper is present in hand and cutpurse card is played (b/c discarded a copper).\n");
+    if (otherPHandCountAfter1 == otherPHandCountBefore1 - 1){
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
     }
     else{
@@ -100,7 +110,7 @@ int main(){
 
     /*Test 3: Verify that the discarded copper is not in the player's discard pile because it should no longer be part of the players full deck of cards*/
     printf("\nTesting that the discarded copper is not in current player's discard pile (this card is no longer part of player's hand) when playing cutpurse card.\n");
-    if (otherPDiscardCountAfter1 == otherPDiscardCountBefore1 + 1){
+    if (otherPDiscardCountAfter1 == otherPDiscardCountBefore1){
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
     }
     else{
@@ -123,24 +133,15 @@ int main(){
     int otherPDiscardCountAfter2 = state2.discardCount[1];
 
     /*Test 4: If player has copper in hand, verify that there are two less cards in hand after the cutpurse card is played*/
-    printf("\nTesting that there is one less cards in the other player's hand if copper is NOT present in hand and cutpurse card is played (b/c discarded only the cutpurse card).\n");
-    if (otherPHandCountAfter2 == otherPHandCountBefore2 - 1){
+    printf("\nTesting that there is are still the same number of cards in the other player's hand if copper is NOT present in the second player's hand and the cutpurse card is played.\n");
+    if (otherPHandCountAfter2 == otherPHandCountBefore2){
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
     }
     else{
         printf("\tTEST FAILED: Hand count before was %d, and hand count after was %d\n", otherPHandCountBefore2, otherPHandCountAfter2);
     }
 
-    /*Test 5: Verify that only 1 card is in the player's discard pile (cutpurse)*/
-    printf("\nTesting that the discarded copper is not in current player's discard pile (this card is no longer part of player's hand) when playing cutpurse card.\n");
-    if (otherPDiscardCountAfter2 == otherPDiscardCountBefore2 + 1){
-        printf("\tTEST SUCCESSFULLY COMPLETED\n");
-    }
-    else{
-        printf("\tTEST FAILED: Discard count before was %d, and discard count after was %d\n", otherPDiscardCountBefore2, otherPDiscardCountAfter2);
-    }
-
-    /*Test 6: Verify no state changes to victory or kingdom card piles*/
+    /*Test 5: Verify no state changes to victory or kingdom card piles*/
     printf("\nTesting that there are no state changes to the victory and kingdom card piles after cutpurse card played.\n");
     if (checkSupplyCountSame(&state1, kingdomCards)){
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
