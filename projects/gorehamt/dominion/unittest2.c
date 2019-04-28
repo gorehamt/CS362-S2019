@@ -43,7 +43,7 @@ int main(){
     /*Test 1: Verify that the current player receives exactly four cards.*/
 
     printf("\nTesting that current player's hand size increases by exactly 4 cards after council room card is played.\n");
-    if ((p1HandSizeAfter == p1HandSizeBefore + 4){
+    if (p1HandSizeAfter == p1HandSizeBefore + 4){
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
     }
     else{
