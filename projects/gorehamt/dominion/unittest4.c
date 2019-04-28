@@ -76,7 +76,6 @@ int main(){
     state1.hand[1][0] = copper;
 
     //remove all coppers from other player's hand in state 2
-    int i;
     for (i = 0; i < state2.handCount[1]; i++){ 
         state2.hand[1][i] = silver; //change all cards to silvers to ensure no coppers
     }
