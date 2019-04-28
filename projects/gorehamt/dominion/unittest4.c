@@ -65,8 +65,15 @@ int main(){
     int handPos = 2; 
     int bonus = -1;
     state1.hand[currentPlayer][handPos] = cutpurse;
-    state1.hand[1][0] = copper;
     state2.hand[currentPlayer][handPos] = cutpurse;
+
+    //remove all coppers from other player's hand in state 1
+    int i;
+    for (i = 0; i < state1.handCount[1]; i++){ 
+        state1.hand[1][i] = silver; //change all cards to silvers to ensure no coppers
+    }
+    //add a copper to other player's hand in state 1
+    state1.hand[1][0] = copper;
 
     //remove all coppers from other player's hand in state 2
     int i;
@@ -119,19 +126,15 @@ int main(){
 
 
     /*---state 2: other player has no coppers in his/her hand---*/
-    //get current players coins, and other players hand count and discard count before
-    //int currentPCoinsBefore2 = state2.coins;
+    //get other players hand count before
     int otherPHandCountBefore2 = state2.handCount[1];
-    //int otherPDiscardCountBefore2 = state2.discardCount[1];
-
+    
     //play cutpurse card with state 1
     cardEffect(cutpurse, -1, -1, -1, &state2, handPos, &bonus);
 
-    //get current players coins, and other players hand count and discard count afteer
-    //int currentPCoinsAfter2 = state2.coins;
+    //get other players hand count and discard count after
     int otherPHandCountAfter2 = state2.handCount[1];
-    //int otherPDiscardCountAfter2 = state2.discardCount[1];
-
+    
     /*Test 4: If player has copper in hand, verify that there are two less cards in hand after the cutpurse card is played*/
     printf("\nTesting that there is are still the same number of cards in the other player's hand if copper is NOT present in the second player's hand and the cutpurse card is played.\n");
     if (otherPHandCountAfter2 == otherPHandCountBefore2){
@@ -150,6 +153,5 @@ int main(){
         printf("\tTEST FAILED: The supply count has changed for one or more kingdom cards or victory cards\n");
     }
 
-   
     return 0;
 }
