@@ -32,6 +32,8 @@ int main(){
     int currentPHandSizeBefore = state.handCount[currentPlayer];
     int currentPNumBuysBefore = state.numBuys;
     int otherPHandSizeBefore = state.handCount[1];
+    int currentPDeckCountBefore = state.deckCount[currentPlayer];
+    int otherPDeckCountBefore = state.deckCount[1];
 
     //play council_room card
     cardEffect(council_room, -1, -1, -1, &state, handPos, &bonus);
@@ -40,13 +42,15 @@ int main(){
     int currentPHandSizeAfter = state.handCount[currentPlayer];
     int currentPNumBuysAfter = state.numBuys;
     int otherPHandSizeAfter = state.handCount[1];
+    int currentPDeckCountAfter = state.deckCount[currentPlayer];
+    int otherPDeckCountAfter = state.deckCount[1];
 
     printf("\n------Testing Council Room Card Implementation------\n");
 
     /*Test 1: Verify that the current player receives exactly four cards.*/
 
-    printf("\nTesting that current player's hand size increases by exactly 4 cards after council room card is played.\n");
-    if (currentPHandSizeAfter == currentPHandSizeBefore + 3){ //3 because of discard.
+    printf("\nTesting that current player's hand size increases by exactly 3 cards after council room card is played (+4 b/c council room played, -1 b/c council room was discarded, for a total of 3 extra cards).\n");
+    if (currentPHandSizeAfter == currentPHandSizeBefore + 3){ //3 because of discard
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
     }
     else{
@@ -71,6 +75,35 @@ int main(){
         printf("\tTEST FAILED: Number of cards in hand before was %d, and number of cards in hand after was %d\n", otherPHandSizeBefore, otherPHandSizeAfter);
     }
 
+    /*Test 4: Verify that cards come from current player's pile*/
+    printf("\nTesting that the extra cards come from current player's deck.\n");
+    if (currentPDeckCountAfter == currentPDeckCountBefore - 4){
+        printf("\tTEST SUCCESSFULLY COMPLETED\n");
+    }
+    else{
+        printf("\tTEST FAILED: Deck count before was %d, and deck count after was %d\n", currentPDeckCountBefore, currentPDeckCountAfter);
+    }
+
+    /*Test 5: Verify that the extra card come from other player's pile*/
+    printf("\nTesting that the extra card come from the other player's deck.\n");
+    if (otherPDeckCountAfter == otherPDeckCountBefore - 1){
+        printf("\tTEST SUCCESSFULLY COMPLETED\n");
+    }
+    else{
+        printf("\tTEST FAILED: Deck count before was %d, and deck count after was %d\n", otherPDeckCountBefore, otherPDeckCountAfter);
+    }
+
+
+    /*Test 6: Verify no state changes to victory or kingdom card piles*/
+/*    printf("\nTesting that there are no state changes to the victory and kingdom card piles.\n")
+    if (otherPDeckCountAfter == otherPDeckCountBefore - 1){
+        printf("\tTEST SUCCESSFULLY COMPLETED\n");
+    }
+    else{
+        printf("\tTEST FAILED: Deck count before was %d, and deck count after was %d\n", otherPDeckCountBefore, otherPDeckCountAfter);
+    }
+
+*/
     return 0;
 }
 
