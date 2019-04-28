@@ -18,7 +18,7 @@ int main(){
     int numPlayers = 2;
     struct gameState state;
     int seed = 1000;
-    int kingdomCards[10] = {adventurer, great_hall, village, minion, mine, cutpurse, embargo, tribute, smithy, council_room};    
+    int kingdomCards[10] = {adventurer, great_hall, village, minion, steward, cutpurse, embargo, tribute, smithy, council_room};    
 
     initializeGame(numPlayers, kingdomCards, seed, &state);
 

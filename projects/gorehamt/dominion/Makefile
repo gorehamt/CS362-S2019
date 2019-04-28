@@ -30,8 +30,9 @@ runtests: testDrawCard
 	cat dominion.c.gcov >> unittestresult.out
 
 #Added unit tests
-unittestresults: unittest1.c dominion.o rngs.o
+unittestresults: unittest1.c unittest2.c dominion.o rngs.o
 	gcc -o unittest1 unittest1.c -g dominion.o rngs.o $(CFLAGS)
+	gcc -o unittest2 unittest2.c -g dominion.o rngs.o $(CFLAGS)
 
 #Traci--remove example later, need code to look something like this
 #unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c dominion.h dominion.c rngs.o
