@@ -27,7 +27,14 @@ int main(){
     int handPos = 2; 
     int bonus = -1;
     state.hand[player][handPos] = council_room;
+
+    int handSize = state.handCount[player];
+    printf("Size of player's hand: %d", handSize);
+
     cardEffect(council_room, -1, -1, -1, &state, handPos, &bonus);
+
+    handSize = state.handCount[player];
+    printf("Size of player's hand after cardEffect: %d", handSize);
 
     printf("\n------Testing Council Room Card Implementation------\n");
 
