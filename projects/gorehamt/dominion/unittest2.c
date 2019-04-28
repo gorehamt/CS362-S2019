@@ -30,14 +30,14 @@ int main(){
 
     //get current hand size, number of buys
     int p1HandSizeBefore = state.handCount[currentPlayer];
-    int p1NumBuysBefore = state.numBuys[currentPlayer];
+    int p1NumBuysBefore = state.numBuys;
 
     //play council_room card
     cardEffect(council_room, -1, -1, -1, &state, handPos, &bonus);
 
     //get hand size, num of buys after card is played
     int p1HandSizeAfter = state.handCount[currentPlayer];
-    int p1NumBuysAfter = state.numBuys[currentPlayer];
+    int p1NumBuysAfter = state.numBuys;
 
     printf("\n------Testing Council Room Card Implementation------\n");
 
