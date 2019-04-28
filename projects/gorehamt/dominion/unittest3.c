@@ -85,8 +85,8 @@ int main(){
     }
 
     /*Test 2: Verify that the current player receives exactly 2 more actions*/
-    printf("\nTesting that current player's number of actions increases by exactly 1 after village card is played. (+2 b/c village played, -1 b/c playing village takes an action, for a total of 1 extra action\n");
-    if (currentPNumActionsAfter == currentPNumActionsBefore + 1){
+    printf("\nTesting that current player's number of actions increases by exactly 2 after village card is played.\n");
+    if (currentPNumActionsAfter == currentPNumActionsBefore + 2){
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
     }
     else{
