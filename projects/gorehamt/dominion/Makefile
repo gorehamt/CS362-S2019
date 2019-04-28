@@ -36,6 +36,7 @@ unittestresults: unittest1.c unittest2.c unittest3.c cardtest3.c dominion.o rngs
 	gcc -o unittest3 unittest3.c -g dominion.o rngs.o $(CFLAGS)
 	gcc -o cardtest1 cardtest1.c -g dominion.o rngs.o $(CFLAGS)
 	gcc -o cardtest3 cardtest3.c -g dominion.o rngs.o $(CFLAGS)
+	gcc -o cardtest4 cardtest4.c -g dominion.o rngs.o $(CFLAGS)
 
 #Traci--remove example later, need code to look something like this
 #unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c dominion.h dominion.c rngs.o

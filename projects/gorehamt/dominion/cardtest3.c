@@ -48,7 +48,7 @@ int main(){
 
     initializeGame(numPlayers, kingdomCards, seed, &state); //sets curse = 10, estate = 8, duchy = 8, provice = 8, copper = 46, silver = 40, gold = 30, all kingdom cards = 8
 
-    //add village card to first player's hand at position 2
+    //add great_hall card to first player's hand at position 2
     int currentPlayer = 0;
     int handPos = 2; 
     int bonus = -1;
