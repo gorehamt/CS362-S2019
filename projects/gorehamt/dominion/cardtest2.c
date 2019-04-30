@@ -65,8 +65,6 @@ int main(){
 
     //get current hand size, number of buys, etc. with state 1
     int currentPHandSizeBefore1 = state1.handCount[currentPlayer];
-    int currentPDeckCountBefore1 = state1.deckCount[currentPlayer];
-    int currentPDiscardCountBefore1 = state1.discardCount[currentPlayer];
     int otherPDeckCountBefore1 = state1.deckCount[1];
     int otherPHandCountBefore1 = state1.handCount[1];
     int otherPDiscardCountBefore1 = state1.discardCount[1];
@@ -76,8 +74,6 @@ int main(){
 
     //get hand size, num of buys, etc. after card is played with state 1
     int currentPHandSizeAfter1 = state1.handCount[currentPlayer];
-    int currentPDeckCountAfter1 = state1.deckCount[currentPlayer];
-    int currentPDiscardCountAfter1 = state1.discardCount[currentPlayer];
     int otherPDeckCountAfter1 = state1.deckCount[1];
     int otherPHandCountAfter1 = state1.handCount[1];
     int otherPDiscardCountAfter1 = state1.discardCount[1];
