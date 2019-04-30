@@ -54,6 +54,13 @@ int main(){
     int currentPlayer = 0;
     int handPos = 2; 
     int bonus = -1;
+
+    //remove all treasure cards from current player's hand
+    int i;
+    for (i = 0; i < state1.handCount[1]; i++){ 
+        state1.hand[1][i] = estate; //change all cards to estates to ensure no treasure cards
+    }
+    //add adventurer card to the player's hand
     state1.hand[currentPlayer][handPos] = adventurer;
 
     //get current hand size, number of buys, etc. with state 1
@@ -122,11 +129,10 @@ int main(){
         int totalCardsNotInHandBefore = currentPDeckCountBefore1 + currentPDiscardCountBefore1;
         int totalCardsNotInHandAfter = currentPDeckCountAfter1 + currentPDiscardCountAfter1;
         printf("\tTEST FAILED: Deck count and discard count before was %d, and deck count and discard count after was %d\n", totalCardsNotInHandBefore, totalCardsNotInHandAfter);
-        printf("Deck count before %d", currentPDeckCountBefore1);
-        printf("Discard count before %d", currentPDiscardCountBefore1);
-        printf("Deck count after %d", currentPDeckCountAfter1);
-        printf("Discard count after %d", currentPDiscardCountAfter1);
-
+        printf("\tDeck count before: %d\n", currentPDeckCountBefore1);
+        printf("\tDiscard count before: %d\n", currentPDiscardCountBefore1);
+        printf("\tDeck count after: %d\n", currentPDeckCountAfter1);
+        printf("\tDiscard count after: %d\n", currentPDiscardCountAfter1);
     }
     
     return 0;
