@@ -83,19 +83,20 @@ int main(){
     int otherPDiscardCountAfter1 = state1.discardCount[1];
 
     printf("\n------Testing Adventurer Card Implementation------\n");
+    printf("\n------When there are not two treasure cards to add to player's hand------\n");
 
-    /*Test 1: Verify that if the current player adds two cards to his/her hand.*/
-    printf("\nTesting that current player's hand size increases by exactly 1 card after adventurer card is played (+2 b/c adventurer played, -1 b/c adventurer was discarded, for a total of 1 extra card).\n");
-    if (currentPHandSizeAfter1 == currentPHandSizeBefore1 + 1){ 
+    /*Test 1: Verify that the current player does NOT add two cards to his/her hand.*/
+    printf("\nTesting that current player's hand size does not increase because 2 treasure cards are not in the current player's hand).\n");
+    if (currentPHandSizeAfter1 != currentPHandSizeBefore1 + 1){ 
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
     }
     else{
         printf("\tTEST FAILED: Hand size before was %d, and hand size after was %d\n", currentPHandSizeBefore1, currentPHandSizeAfter1);
     }
 
-    /*Test 2: Verify that extra cards comes from current player's pile*/
-    printf("\nTesting that the extra cards come from current player's deck when playing adventurer card.\n");
-    if (currentPDeckCountAfter1 != currentPDeckCountBefore1){ //this would mean that there was some change in the player's deck after the function was called
+    /*Test 2: Verify that extra cards do not come from current player's pile*/
+    printf("\nTesting that current player does not gain any extra cards in hand when adventurer card is played.\n");
+    if (currentPDeckCountAfter1 == currentPDeckCountBefore1){ //this would mean that there was some change in the player's deck after the function was called
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
     }
     else{
@@ -120,20 +121,5 @@ int main(){
         printf("\tTEST FAILED: The supply count has changed for one or more kingdom cards or victory cards\n");
     }
 
-    /*Test 5: Verify that the cards taken from player's hand and not added to the player's deck are now in the player's discard pile*/
-    printf("\nTesting that the cards taken from the player's hand and not added to the player's deck (non-treasure cards) are now in the player's discard pile.\n");
-    if ((currentPDeckCountBefore1 + currentPDiscardCountBefore1) == (currentPDeckCountAfter1 + currentPDiscardCountAfter1 - 2)){ //-2 because 2 treasure cards should now be added to hand count
-        printf("\tTEST SUCCESSFULLY COMPLETED\n");
-    }
-    else{
-        int totalCardsNotInHandBefore = currentPDeckCountBefore1 + currentPDiscardCountBefore1;
-        int totalCardsNotInHandAfter = currentPDeckCountAfter1 + currentPDiscardCountAfter1;
-        printf("\tTEST FAILED: Deck count and discard count before was %d, and deck count and discard count after was %d\n", totalCardsNotInHandBefore, totalCardsNotInHandAfter);
-        printf("\tDeck count before: %d\n", currentPDeckCountBefore1);
-        printf("\tDiscard count before: %d\n", currentPDiscardCountBefore1);
-        printf("\tDeck count after: %d\n", currentPDeckCountAfter1);
-        printf("\tDiscard count after: %d\n", currentPDiscardCountAfter1);
-    }
-    
     return 0;
 }
