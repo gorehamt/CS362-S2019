@@ -122,6 +122,11 @@ int main(){
         int totalCardsNotInHandBefore = currentPDeckCountBefore1 + currentPDiscardCountBefore1;
         int totalCardsNotInHandAfter = currentPDeckCountAfter1 + currentPDiscardCountAfter1;
         printf("\tTEST FAILED: Deck count and discard count before was %d, and deck count and discard count after was %d\n", totalCardsNotInHandBefore, totalCardsNotInHandAfter);
+        printf("Deck count before %d", currentPDeckCountBefore1);
+        printf("Discard count before %d", currentPDiscardCountBefore1);
+        printf("Deck count after %d", currentPDeckCountAfter1);
+        printf("Discard count after %d", currentPDiscardCountAfter1);
+
     }
     
     return 0;
