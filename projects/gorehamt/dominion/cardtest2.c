@@ -86,7 +86,7 @@ int main(){
     printf("\n------When there are not two treasure cards to add to player's hand------\n");
 
     /*Test 1: Verify that the current player does NOT add two cards to his/her hand.*/
-    printf("\nTesting that current player's hand size does not increase because 2 treasure cards are not in the current player's hand).\n");
+    printf("\nTesting that current player's hand size does not increase because 2 treasure cards are NOT in the current player's hand).\n");
     if (currentPHandSizeAfter1 != currentPHandSizeBefore1 + 1){ 
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
     }

@@ -1,6 +1,6 @@
 /****************************************************************************************
 * Unit Tests for adventurer card (for additional unit tests for adventurer card, 
-* see unittest1.c)
+* see cardtest2.c)
 * Written by: Traci Goreham, CS361
 ****************************************************************************************/
 
@@ -76,6 +76,7 @@ int main(){
     int otherPDiscardCountAfter1 = state1.discardCount[1];
 
     printf("\n------Testing Adventurer Card Implementation------\n");
+     printf("\n------When there are two treasure cards to add to player's hand------\n");
 
     /*Test 1: Verify that if the current player adds two cards to his/her hand.*/
     printf("\nTesting that current player's hand size increases by exactly 1 card after adventurer card is played (+2 b/c adventurer played, -1 b/c adventurer was discarded, for a total of 1 extra card).\n");
