@@ -94,16 +94,7 @@ int main(){
         printf("\tTEST FAILED: Hand size before was %d, and hand size after was %d\n", currentPHandSizeBefore1, currentPHandSizeAfter1);
     }
 
-    /*Test 2: Verify that extra cards do not come from current player's pile*/
-    printf("\nTesting that current player does not gain any extra cards in hand when adventurer card is played.\n");
-    if (currentPDeckCountAfter1 == currentPDeckCountBefore1){ //this would mean that there was some change in the player's deck after the function was called
-        printf("\tTEST SUCCESSFULLY COMPLETED\n");
-    }
-    else{
-        printf("\tTEST FAILED: Deck count before was %d, and deck count after was %d\n", currentPDeckCountBefore1, currentPDeckCountAfter1);
-    }
-
-    /*Test 3: Verify that no state changes occur for the other player*/
+    /*Test 2: Verify that no state changes occur for the other player*/
     printf("\nTesting that no state changes occur for the other player when playing adventurer card.\n");
     if ((otherPHandCountBefore1 == otherPHandCountAfter1) && (otherPDeckCountBefore1 == otherPDeckCountAfter1) && (otherPDiscardCountBefore1 == otherPDiscardCountAfter1)){
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
@@ -112,7 +103,7 @@ int main(){
         printf("\tTEST FAILED: The hand count, deck count, or discard count has changed for the other player.\n");
     }
 
-    /*Test 4: Verify no state changes to victory or kingdom card piles*/
+    /*Test 3: Verify no state changes to victory or kingdom card piles*/
     printf("\nTesting that there are no state changes to the victory and kingdom card piles when adventurer card played.\n");
     if (checkSupplyCountSame(&state1, kingdomCards)){
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
