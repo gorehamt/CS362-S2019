@@ -11,6 +11,7 @@
 //include relevant libraries
 #include <string.h>
 #include <stdio.h>
+#include <limits.h> //INT_MAX
 
 
 /*****************************************************************************************************************************************
@@ -42,7 +43,7 @@ int main(){
 
     //setup game
     int numPlayers = 2;
-    struct gameState state1, state2, state3;
+    struct gameState state1, state2, state3, state4, state5;
     int seed = 1000;
     int kingdomCards[10] = {adventurer, great_hall, village, minion, steward, cutpurse, embargo, tribute, smithy, council_room};    
 
@@ -50,6 +51,9 @@ int main(){
     initializeGame(numPlayers, kingdomCards, seed, &state1); //sets curse = 10, estate = 8, duchy = 8, provice = 8, copper = 46, silver = 40, gold = 30, all kingdom cards = 8
     initializeGame(numPlayers, kingdomCards, seed, &state2);
     initializeGame(numPlayers, kingdomCards, seed, &state3);
+    initializeGame(numPlayers, kingdomCards, seed, &state4);
+    initializeGame(numPlayers, kingdomCards, seed, &state5);
+    initializeGame(numPlayers, kingdomCards, seed, &state6);
 
     //add steward card to first player's hand at position 2 of all three game states
     int currentPlayer = 0;
@@ -58,6 +62,9 @@ int main(){
     state1.hand[currentPlayer][handPos] = steward;
     state2.hand[currentPlayer][handPos] = steward;
     state3.hand[currentPlayer][handPos] = steward;
+    state4.hand[currentPlayer][handPos] = steward;
+    state5.hand[currentPlayer][handPos] = steward;
+    state6.hand[currentPlayer][handPos] = steward;
 
     /*---state 1: choosing to add two cards to hand---*/
     //get current hand size, number of buys, etc. with state 1
@@ -212,6 +219,97 @@ int main(){
     }
     else{
         printf("\tTEST FAILED: The supply count has changed for one or more kingdom cards or victory cards\n");
+    }
+
+
+    /*---state 4: making an invalid choice, negative/boundary testing, negative number---*/
+    //get hand size, discard count for current player before
+    int currentPHandSizeBefore4 = state4.handCount[currentPlayer];
+    int currentPDiscardCountBefore4 = state4.discardCount[currentPlayer];
+
+    //play steward card with invalid choice of -1
+    cardEffect(steward, -1, 0, 1, &state4, handPos, &bonus);
+
+    //get hand size, discard count for current player after
+    int currentPHandSizeAfter4 = state4.handCount[currentPlayer];
+    int currentPDiscardCountAfter4 = state4.discardCount[currentPlayer];
+
+    /*Test 12: Verify that if the current player chooses choice -1, the program will handle it gracefully and cause the player to discard two cards.*/
+    printf("\nTesting invalid choice of -1: should handle input as if discarding two cards was chosen.\n");
+    if (currentPHandSizeAfter4 == currentPHandSizeBefore4 - 3){ 
+        printf("\tTEST SUCCESSFULLY COMPLETED\n");
+    }
+    else{
+        printf("\tTEST FAILED: Hand size before was %d, and hand size after was %d\n", currentPHandSizeBefore4, currentPHandSizeAfter4);
+    }
+
+    /*Test 13: Verify that discarded cards are not in the player's discard pile because they should no longer be part of the players full deck of cards*/
+    printf("\nTesting that the discarded cards are not in current player's discard pile (these cards are no longer part of player's hand) when making invalid choice of -1.\n");
+    if (currentPDiscardCountAfter4 == currentPDiscardCountBefore4){
+        printf("\tTEST SUCCESSFULLY COMPLETED\n");
+    }
+    else{
+        printf("\tTEST FAILED: Discard count before was %d, and discard count after was %d\n", currentPDiscardCountBefore4, currentPDiscardCountAfter4);
+    }
+
+    /*---state 5: making an invalid choice, negative/boundary testing, choice of INT_MAX---*/
+    //get hand size, discard count for current player before
+    int currentPHandSizeBefore5 = state5.handCount[currentPlayer];
+    int currentPDiscardCountBefore5 = state5.discardCount[currentPlayer];
+
+    //play steward card with invalid choice of INT_MAX
+    cardEffect(steward, INT_MAX, 0, 1, &state5, handPos, &bonus);
+
+    //get hand size, discard count for current player after
+    int currentPHandSizeAfter5 = state5.handCount[currentPlayer];
+    int currentPDiscardCountAfter5 = state5.discardCount[currentPlayer];
+
+    /*Test 14: Verify that if the current player chooses choice INT_MAX, the program will handle it gracefully and cause the player to discard two cards.*/
+    printf("\nTesting invalid choice of -1: should handle input as if discarding two cards was chosen.\n");
+    if (currentPHandSizeAfter5 == currentPHandSizeBefore5 - 3){ 
+        printf("\tTEST SUCCESSFULLY COMPLETED\n");
+    }
+    else{
+        printf("\tTEST FAILED: Hand size before was %d, and hand size after was %d\n", currentPHandSizeBefore5, currentPHandSizeAfter5);
+    }
+
+    /*Test 15: Verify that discarded cards are not in the player's discard pile because they should no longer be part of the players full deck of cards*/
+    printf("\nTesting that the discarded cards are not in current player's discard pile (these cards are no longer part of player's hand) when making invalid choice of INT_MAX.\n");
+    if (currentPDiscardCountAfter5 == currentPDiscardCountBefore5){
+        printf("\tTEST SUCCESSFULLY COMPLETED\n");
+    }
+    else{
+        printf("\tTEST FAILED: Discard count before was %d, and discard count after was %d\n", currentPDiscardCountBefore5, currentPDiscardCountAfter5);
+    }
+
+    /*---state 6: making an invalid choice, negative testing, player chooses to discard a card not in his/her hand---*/
+    //get hand size, discard count for current player before
+    int currentPHandSizeBefore6 = state6.handCount[currentPlayer];
+    int currentPDiscardCountBefore6 = state6.discardCount[currentPlayer];
+
+    //play steward card with invalid choice of INT_MAX
+    cardEffect(steward, 3, 25, 1, &state6, handPos, &bonus);  //25 is not a valid number for a card to discard
+
+    //get hand size, discard count for current player after
+    int currentPHandSizeAfter6 = state6.handCount[currentPlayer];
+    int currentPDiscardCountAfter6 = state6.discardCount[currentPlayer];
+
+    /*Test 16: Verify that if the current player chooses choice INT_MAX, the program will handle it gracefully and cause the player to discard two cards.*/
+    printf("\nTesting invalid choice of card to discard.\n");
+    if (currentPHandSizeAfter6 == currentPHandSizeBefore6 - 3){ 
+        printf("\tTEST SUCCESSFULLY COMPLETED\n");
+    }
+    else{
+        printf("\tTEST FAILED: Hand size before was %d, and hand size after was %d\n", currentPHandSizeBefore6, currentPHandSizeAfter6);
+    }
+
+    /*Test 17: Verify that discarded cards are not in the player's discard pile because they should no longer be part of the players full deck of cards*/
+    printf("\nTesting that the discarded cards are not in current player's discard pile (these cards are no longer part of player's hand) when making invalid choice of INT_MAX.\n");
+    if (currentPDiscardCountAfter6 == currentPDiscardCountBefore6){
+        printf("\tTEST SUCCESSFULLY COMPLETED\n");
+    }
+    else{
+        printf("\tTEST FAILED: Discard count before was %d, and discard count after was %d\n", currentPDiscardCountBefore6, currentPDiscardCountAfter6);
     }
 
     return 0;
