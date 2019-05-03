@@ -285,14 +285,12 @@ int main(){
     /*---state 6: making an invalid choice, negative testing, player chooses to discard a card not in his/her hand---*/
     //get hand size, discard count for current player before
     int currentPHandSizeBefore6 = state6.handCount[currentPlayer];
-    int currentPDiscardCountBefore6 = state6.discardCount[currentPlayer];
 
     //play steward card with invalid choice of INT_MAX
     cardEffect(steward, 3, 25, 1, &state6, handPos, &bonus);  //25 is not a valid number for a card to discard
 
     //get hand size, discard count for current player after
     int currentPHandSizeAfter6 = state6.handCount[currentPlayer];
-    int currentPDiscardCountAfter6 = state6.discardCount[currentPlayer];
 
     /*Test 16: Verify that if the current player chooses choice INT_MAX, the program will handle it gracefully and cause the player to discard two cards.*/
     printf("\nTesting invalid choice of card to discard.\n");
