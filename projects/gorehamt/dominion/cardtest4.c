@@ -303,14 +303,5 @@ int main(){
         printf("\tTEST FAILED: Hand size before was %d, and hand size after was %d\n", currentPHandSizeBefore6, currentPHandSizeAfter6);
     }
 
-    /*Test 17: Verify that discarded cards are not in the player's discard pile because they should no longer be part of the players full deck of cards*/
-    printf("\nTesting that the discarded cards are not in current player's discard pile (these cards are no longer part of player's hand) when making invalid choice of INT_MAX.\n");
-    if (currentPDiscardCountAfter6 != currentPDiscardCountBefore6){
-        printf("\tTEST SUCCESSFULLY COMPLETED\n");
-    }
-    else{
-        printf("\tTEST FAILED: Discard count before was %d, and discard count after was %d\n", currentPDiscardCountBefore6, currentPDiscardCountAfter6);
-    }
-
     return 0;
 }
