@@ -43,7 +43,7 @@ int main(){
 
     //setup game
     int numPlayers = 2;
-    struct gameState state1, state2, state3, state4, state5;
+    struct gameState state1, state2, state3, state4, state5, state6;
     int seed = 1000;
     int kingdomCards[10] = {adventurer, great_hall, village, minion, steward, cutpurse, embargo, tribute, smithy, council_room};    
 
