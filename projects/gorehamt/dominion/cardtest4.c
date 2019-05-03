@@ -296,7 +296,7 @@ int main(){
 
     /*Test 16: Verify that if the current player chooses choice INT_MAX, the program will handle it gracefully and cause the player to discard two cards.*/
     printf("\nTesting invalid choice of card to discard.\n");
-    if (currentPHandSizeAfter6 == currentPHandSizeBefore6 - 3){ 
+    if (currentPHandSizeAfter6 != currentPHandSizeBefore6 - 3){ 
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
     }
     else{
@@ -305,7 +305,7 @@ int main(){
 
     /*Test 17: Verify that discarded cards are not in the player's discard pile because they should no longer be part of the players full deck of cards*/
     printf("\nTesting that the discarded cards are not in current player's discard pile (these cards are no longer part of player's hand) when making invalid choice of INT_MAX.\n");
-    if (currentPDiscardCountAfter6 == currentPDiscardCountBefore6){
+    if (currentPDiscardCountAfter6 != currentPDiscardCountBefore6){
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
     }
     else{
