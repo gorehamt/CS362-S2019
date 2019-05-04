@@ -134,7 +134,7 @@ int main(){
     //int currentPDeckCountAfter2 = state2.discardCount[currentPlayer];
     
     /*Test 4: Verify that the current player's discard pile is shuffled when the current player's deckCount < 1.*/
-    printf("\nTesting that current player's discard pile is shuffled when the current player's deck is empty).\n");
+    printf("\nTesting that current player's discard pile is shuffled when the current player's deck is empty.\n");
     if (currentPDeckCountBefore2 == 0 && (currentPDiscardCountBefore2 != currentPDiscardCountAfter2)){ 
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
     }
