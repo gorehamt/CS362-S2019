@@ -3,11 +3,10 @@
 #include<stdlib.h>
 #include<time.h>
 
-
-/*TRACI--this function is working at getting random chars*/
 char inputChar()
 {
     // TODO: rewrite this function
+    //get random ascii value
     char charValue;
     int asciiTotalValues = 128;
     charValue = rand() % asciiTotalValues;
@@ -18,8 +17,10 @@ char inputChar()
 char *inputString()
 {
     // TODO: rewrite this function
-    char stringVal[6];
+    int sLength = 6;
+    char *stringVal = malloc(sLength * sizeof(char));
 
+    //fill c-string with random chars
     int i;
     for (i = 0; i < 6; i++){
       stringVal[i] = inputChar();
@@ -60,6 +61,8 @@ void testme()
       printf("error ");
       exit(200);
     }
+
+    free(s);
   }
 }
 
