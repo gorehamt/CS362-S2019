@@ -58,18 +58,21 @@ int main(){
 
     //remove all treasure cards from current player's hand
     int i;
-    for (i = 0; i < state1.handCount[1]; i++){ 
-        state1.hand[1][i] = estate; //change all cards to estates to ensure no treasure cards
+    for (i = 0; i < state1.handCount[currentPlayer]; i++){ 
+        state1.hand[currentPlayer][i] = estate; //change all cards to estates to ensure no treasure cards
     }
     //add adventurer card to the player's hand
     state1.hand[currentPlayer][handPos] = adventurer;
 
     //move all cards to discard pile, to later require shuffling
     int j;
-    for(j = 0; j < state2.deckCount[1]; j++){
-        state2.discard[1][j] = state2.deck[1][j];
-        state2.deck[1][j] = -1; 
+    for(j = 0; j < state2.deckCount[currentPlayer]; j++){
+        state2.discard[currentPlayer][j] = state2.deck[currentPlayer][j];
+        state2.deck[currentPlayer][j] = -1; 
+        state2.deckCount[currentPlayer]--;
+        state2.discardCount[currentPlayer]++;
     }
+    
     //add adventurer card to the player's hand
     state2.hand[currentPlayer][handPos] = adventurer;
 
