@@ -2,7 +2,7 @@
 #include<string.h>
 #include<stdlib.h>
 #include<time.h>
-#include<limits.h>
+
 
 /*TRACI--this function is working at getting random chars*/
 char inputChar()
@@ -18,19 +18,15 @@ char inputChar()
 char *inputString()
 {
     // TODO: rewrite this function
-    int numOfCharsInString = rand() % INT_MAX;
-    char * stringVal = malloc(numOfCharsInString * sizeof(char));
+    char stringVal[6];
 
     int i;
-    for (i = 0; i < numOfCharsInString - 1; i++){
+    for (i = 0; i < 6; i++){
       stringVal[i] = inputChar();
     }
     //put the null terminator at the end of the c-string
-    stringVal[numOfCharsInString - 1] = '\0';
+    stringVal[5] = '\0';
 
-    //need to free the dynamically allocated memory, but also need to return the value
-    //free(stringVal);
-    printf("In inputChar function and returning a string value of %s\n", stringVal);
     return stringVal;
 }
 
@@ -50,7 +46,7 @@ void testme()
     if (c == '[' && state == 0) state = 1;
     if (c == '(' && state == 1) state = 2;
     if (c == '{' && state == 2) state = 3;
-    if (c == ' '&& state == 3) state = 4;
+    if (c == ' ' && state == 3) state = 4;
     if (c == 'a' && state == 4) state = 5;
     if (c == 'x' && state == 5) state = 6;
     if (c == '}' && state == 6) state = 7;
