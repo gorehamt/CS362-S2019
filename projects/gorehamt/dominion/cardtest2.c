@@ -115,9 +115,9 @@ int main(){
     for(j = 0; j < state2.deckCount[currentPlayer]; j++){
         state2.discard[currentPlayer][j] = state2.deck[currentPlayer][j];
         state2.deck[currentPlayer][j] = -1; 
-        state2.deckCount[currentPlayer]--;
-        state2.discardCount[currentPlayer]++;
     }
+    state2.discardCount[currentPlayer] = state2.deckCount[currentPlayer];
+    state2.deckCount[currentPlayer] = 0;//Reset discard
     
     //add adventurer card to the player's hand
     state2.hand[currentPlayer][handPos] = adventurer;
