@@ -4,6 +4,7 @@
 #include<time.h>
 #include<limits.h>
 
+/*TRACI--this function is working at getting random chars*/
 char inputChar()
 {
     // TODO: rewrite this function
@@ -11,7 +12,6 @@ char inputChar()
     int asciiTotalValues = 128;
     charValue = rand() % asciiTotalValues;
 
-    printf("In inputChar function and returning a char value of %c\n", charValue);
     return charValue;
 }
 
@@ -40,7 +40,7 @@ void testme()
   char *s;
   char c;
   int state = 0;
-  while (1)
+  while (1) 
   {
     tcCount++;
     c = inputChar();
