@@ -6,13 +6,31 @@
 char inputChar()
 {
     // TODO: rewrite this function
-    return ' ';
+    char charValue;
+    int asciiTotalValues = 128;
+    charValue = rand() % asciiTotalValues;
+
+    printf("In inputChar function and returning a char value of %c\n", charValue);
+    return charValue;
 }
 
 char *inputString()
 {
     // TODO: rewrite this function
-    return "";
+    int numOfCharsInString = rand() % INT_MAX;
+    char * stringVal = malloc(numOfCharsInString * sizeof(char));
+
+    int i;
+    for (i = 0; i < numOfCharsInString - 1; i++){
+      stringVal[i] = inputChar();
+    }
+    //put the null terminator at the end of the c-string
+    stringVal[numOfCharsInString - 1] = '\0';
+
+    //need to free the dynamically allocated memory, but also need to return the value
+    //free(stringVal);
+    printf("In inputChar function and returning a string value of %s\n", stringVal);
+    return stringVal;
 }
 
 void testme()
