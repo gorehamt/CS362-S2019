@@ -119,15 +119,13 @@ int main(){
     //get current hand size, discard count, deck count before with state 2
     int currentPDiscardCountBefore2 = state2.discardCount[currentPlayer];
     int currentPDeckCountBefore2 = state2.discardCount[currentPlayer];
-    int currentPHandSizeBefore2 = state2.handCount[currentPlayer];
 
     //play adventurer card
     cardEffect(adventurer, -1, -1, -1, &state2, handPos, &bonus);
 
     //get hand size, discard count, deck count after card is played with state 2
-    int currentPDiscardCountAfter2 = state2.discardCount[currentPlayer];
+    //int currentPDiscardCountAfter2 = state2.discardCount[currentPlayer];
     int currentPDeckCountAfter2 = state2.discardCount[currentPlayer];
-    int currentPHandSizeAfter2 = state2.handCount[currentPlayer];
     
     /*Test 4: Verify that the current player's discard pile is shuffled when the current player's deckCount < 1.*/
     printf("\nTesting that current player's discard pile is shuffled when the current player's deck is empty).\n");
