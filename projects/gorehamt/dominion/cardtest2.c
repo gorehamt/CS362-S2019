@@ -43,12 +43,13 @@ int main(){
 
     //setup game
     int numPlayers = 2;
-    struct gameState state1;
+    struct gameState state1, state2;
     int seed = 1000;
     int kingdomCards[10] = {adventurer, great_hall, village, minion, steward, cutpurse, embargo, tribute, smithy, council_room};    
 
     //initialize three of the same game states
     initializeGame(numPlayers, kingdomCards, seed, &state1); //sets curse = 10, estate = 8, duchy = 8, provice = 8, copper = 46, silver = 40, gold = 30, all kingdom cards = 8
+    initializeGame(numPlayers, kingdomCards, seed, &state2);
 
     //add adventurer card to first player's hand at position 2
     int currentPlayer = 0;
@@ -62,6 +63,13 @@ int main(){
     }
     //add adventurer card to the player's hand
     state1.hand[currentPlayer][handPos] = adventurer;
+
+    //move all cards to discard pile, to later require shuffling
+    int j;
+    for(j = 0; j < state2.deckCount[1]; j++){
+        state2.hand[1][j] = state2.deck[1][j];
+        state2.hand[1][j] = -1; 
+    }
 
     //get current hand size, number of buys, etc. with state 1
     int currentPHandSizeBefore1 = state1.handCount[currentPlayer];
@@ -106,6 +114,28 @@ int main(){
     }
     else{
         printf("\tTEST FAILED: The supply count has changed for one or more kingdom cards or victory cards\n");
+    }
+
+    //get current hand size, discard count, deck count before with state 2
+    int currentPDiscardCountBefore2 = state2.discardCount[currentPlayer];
+    int currentPDeckCountBefore2 = state2.discardCount[currentPlayer];
+    int currentPHandSizeBefore2 = state2.handCount[currentPlayer];
+
+    //play adventurer card
+    cardEffect(adventurer, -1, -1, -1, &state2, handPos, &bonus);
+
+    //get hand size, discard count, deck count after card is played with state 2
+    int currentPDiscardCountAfter2 = state2.discardCount[currentPlayer];
+    int currentPDeckCountAfter2 = state2.discardCount[currentPlayer];
+    int currentPHandSizeAfter2 = state2.handCount[currentPlayer];
+    
+    /*Test 4: Verify that the current player's discard pile is shuffled when the current player's deckCount < 1.*/
+    printf("\nTesting that current player's discard pile is shuffled when the current player's deck is empty).\n");
+    if (currentPDeckCountBefore2 == 0 && (currentPDiscardCountBefore2 != currentPDiscardCountAfter2)){ 
+        printf("\tTEST SUCCESSFULLY COMPLETED\n");
+    }
+    else{
+        printf("\tTEST FAILED: Current player's deck count before was %d not 0, and the discard count before adventurer was played was %d, and after was %d.\n", currentPDeckCountBefore2, currentPDiscardCountBefore2, currentPDiscardCountAfter2);
     }
 
     return 0;

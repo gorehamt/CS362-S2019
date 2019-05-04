@@ -292,8 +292,8 @@ int main(){
     //get hand size, discard count for current player after
     int currentPHandSizeAfter6 = state6.handCount[currentPlayer];
 
-    /*Test 16: Verify that if the current player chooses choice INT_MAX, the program will handle it gracefully and cause the player to discard two cards.*/
-    printf("\nTesting invalid choice of card to discard.\n");
+    /*Test 16: Verify that a card is not removed from a player's hand if the card chosen is invalid.*/
+    printf("\nTesting invalid choice of card to discard. A card should not be removed from the current player's hand.\n");
     if (currentPHandSizeAfter6 != currentPHandSizeBefore6 - 3){ 
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
     }
