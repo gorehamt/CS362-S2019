@@ -53,6 +53,7 @@ int main(){
 
     //add adventurer card to first player's hand at position 2
     int currentPlayer = 0;
+    int otherPlayer = 1;
     int handPos = 2; 
     int bonus = -1;
 
@@ -64,32 +65,20 @@ int main(){
     //add adventurer card to the player's hand
     state1.hand[currentPlayer][handPos] = adventurer;
 
-    //move all cards to discard pile, to later require shuffling
-    int j;
-    for(j = 0; j < state2.deckCount[currentPlayer]; j++){
-        state2.discard[currentPlayer][j] = state2.deck[currentPlayer][j];
-        state2.deck[currentPlayer][j] = -1; 
-        state2.deckCount[currentPlayer]--;
-        state2.discardCount[currentPlayer]++;
-    }
-    
-    //add adventurer card to the player's hand
-    state2.hand[currentPlayer][handPos] = adventurer;
-
     //get current hand size, number of buys, etc. with state 1
     int currentPHandSizeBefore1 = state1.handCount[currentPlayer];
-    int otherPDeckCountBefore1 = state1.deckCount[1];
-    int otherPHandCountBefore1 = state1.handCount[1];
-    int otherPDiscardCountBefore1 = state1.discardCount[1];
+    int otherPDeckCountBefore1 = state1.deckCount[otherPlayer];
+    int otherPHandCountBefore1 = state1.handCount[otherPlayer];
+    int otherPDiscardCountBefore1 = state1.discardCount[otherPlayer];
 
     //play adventurer card
     cardEffect(adventurer, -1, -1, -1, &state1, handPos, &bonus);
 
     //get hand size, num of buys, etc. after card is played with state 1
     int currentPHandSizeAfter1 = state1.handCount[currentPlayer];
-    int otherPDeckCountAfter1 = state1.deckCount[1];
-    int otherPHandCountAfter1 = state1.handCount[1];
-    int otherPDiscardCountAfter1 = state1.discardCount[1];
+    int otherPDeckCountAfter1 = state1.deckCount[otherPlayer];
+    int otherPHandCountAfter1 = state1.handCount[otherPlayer];
+    int otherPDiscardCountAfter1 = state1.discardCount[otherPlayer];
 
     printf("\n------Testing Adventurer Card Implementation------\n");
     printf("\n------When there are not two treasure cards to add to player's hand------\n");
@@ -121,9 +110,21 @@ int main(){
         printf("\tTEST FAILED: The supply count has changed for one or more kingdom cards or victory cards\n");
     }
 
+    //move all cards to discard pile, to later require shuffling
+    int j;
+    for(j = 0; j < state2.deckCount[currentPlayer]; j++){
+        state2.discard[currentPlayer][j] = state2.deck[currentPlayer][j];
+        state2.deck[currentPlayer][j] = -1; 
+        state2.deckCount[currentPlayer]--;
+        state2.discardCount[currentPlayer]++;
+    }
+    
+    //add adventurer card to the player's hand
+    state2.hand[currentPlayer][handPos] = adventurer;
+
     //get current hand size, discard count, deck count before with state 2
     int currentPDiscardCountBefore2 = state2.discardCount[currentPlayer];
-    int currentPDeckCountBefore2 = state2.discardCount[currentPlayer];
+    int currentPDeckCountBefore2 = state2.deckCount[currentPlayer];
 
     //play adventurer card
     cardEffect(adventurer, -1, -1, -1, &state2, handPos, &bonus);
