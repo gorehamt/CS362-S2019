@@ -67,9 +67,11 @@ int main(){
     //move all cards to discard pile, to later require shuffling
     int j;
     for(j = 0; j < state2.deckCount[1]; j++){
-        state2.hand[1][j] = state2.deck[1][j];
-        state2.hand[1][j] = -1; 
+        state2.discard[1][j] = state2.deck[1][j];
+        state2.discard[1][j] = -1; 
     }
+    //add adventurer card to the player's hand
+    state2.hand[currentPlayer][handPos] = adventurer;
 
     //get current hand size, number of buys, etc. with state 1
     int currentPHandSizeBefore1 = state1.handCount[currentPlayer];
