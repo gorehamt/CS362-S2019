@@ -3,27 +3,32 @@
 #include<stdlib.h>
 #include<time.h>
 
-char inputChar()
+char inputChar(int isString)
 {
-    // TODO: rewrite this function
-    //get random ascii value
     char charValue;
-    int asciiTotalValues = 128;
-    charValue = rand() % asciiTotalValues;
+
+    if (isString == 1){ //get random ordering or r,e,s,t
+      char possibleStringValues[4] = "rest";
+      charValue = possibleStringValues[rand() % (sizeof(possibleStringValues) - 1)];
+    }
+    else{ //get random ascii value
+      int asciiTotalValues = 128;
+      charValue = rand() % asciiTotalValues;
+    }
 
     return charValue;
 }
 
 char *inputString()
 {
-    // TODO: rewrite this function
+    int isString = 1; //true
     int sLength = 6;
     char *stringVal = malloc(sLength * sizeof(char));
 
     //fill c-string with random chars
     int i;
     for (i = 0; i < 6; i++){
-      stringVal[i] = inputChar();
+      stringVal[i] = inputChar(isString);
     }
     //put the null terminator at the end of the c-string
     stringVal[5] = '\0';
@@ -40,7 +45,8 @@ void testme()
   while (1) 
   {
     tcCount++;
-    c = inputChar();
+    int isString = 0; //initialize isString variable to 0, false
+    c = inputChar(isString);
     s = inputString();
     printf("Iteration %d: c = %c, s = %s, state = %d\n", tcCount, c, s, state);
 
