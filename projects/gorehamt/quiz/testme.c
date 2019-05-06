@@ -9,7 +9,7 @@ char inputChar(int isString)
 
     if (isString == 1){ //get random ordering or r,e,s,t
       char possibleStringValues[4] = "rest";
-      charValue = possibleStringValues[rand() % (sizeof(possibleStringValues) - 1)];
+      charValue = possibleStringValues[rand() % 4];
     }
     else{ //get random ascii value
       int asciiTotalValues = 128;
