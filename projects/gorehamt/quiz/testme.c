@@ -65,6 +65,7 @@ void testme()
        && state == 9)
     {
       printf("error ");
+      free(s);
       exit(200);
     }
 
