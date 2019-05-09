@@ -19,7 +19,6 @@ char inputChar(int isString)
     return charValue;
 }
 
-/*
 char *inputString()
 {
     int isString = 1; //true
@@ -36,8 +35,8 @@ char *inputString()
 
     return stringVal;
 }
-*/
 
+/*function without malloc
 char *inputString(char *string)
 {
     int isString = 1; //true
@@ -54,12 +53,13 @@ char *inputString(char *string)
 
     return string;
 }
+*/
 
 void testme()
 {
   int tcCount = 0;
   char *s;
-  char string[6];
+  //char string[6]; //for function without malloc
   char c;
   int state = 0;
   while (1) 
@@ -67,8 +67,8 @@ void testme()
     tcCount++;
     int isString = 0; //initialize isString variable to 0, false
     c = inputChar(isString);
-    s = inputString(&string);
-    //s = inputString();
+    //s = inputString(&string); //for function without malloc
+    s = inputString();
     printf("Iteration %d: c = %c, s = %s, state = %d\n", tcCount, c, s, state);
 
     if (c == '[' && state == 0) state = 1;
@@ -86,11 +86,11 @@ void testme()
        && state == 9)
     {
       printf("error ");
-      //free(s);
+      free(s);
       exit(200);
     }
 
-    //free(s);
+    free(s);
   }
 }
 
