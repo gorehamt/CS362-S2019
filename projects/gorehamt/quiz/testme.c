@@ -19,6 +19,7 @@ char inputChar(int isString)
     return charValue;
 }
 
+/*
 char *inputString()
 {
     int isString = 1; //true
@@ -35,11 +36,30 @@ char *inputString()
 
     return stringVal;
 }
+*/
+
+char *inputString(char *string)
+{
+    int isString = 1; //true
+    //int sLength = 6;
+    //char *stringVal = malloc(sLength * sizeof(char));
+
+    //fill c-string with random chars
+    int i;
+    for (i = 0; i < 6; i++){
+      string[i] = inputChar(isString);
+    }
+    //put the null terminator at the end of the c-string
+    string[5] = '\0';
+
+    return string;
+}
 
 void testme()
 {
   int tcCount = 0;
   char *s;
+  char string[6];
   char c;
   int state = 0;
   while (1) 
@@ -47,7 +67,8 @@ void testme()
     tcCount++;
     int isString = 0; //initialize isString variable to 0, false
     c = inputChar(isString);
-    s = inputString();
+    s = inputString(&string);
+    //s = inputString();
     printf("Iteration %d: c = %c, s = %s, state = %d\n", tcCount, c, s, state);
 
     if (c == '[' && state == 0) state = 1;
