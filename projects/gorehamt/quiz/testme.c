@@ -65,11 +65,11 @@ void testme()
        && state == 9)
     {
       printf("error ");
-      free(s);
+      //free(s);
       exit(200);
     }
 
-    free(s);
+    //free(s);
   }
 }
 
