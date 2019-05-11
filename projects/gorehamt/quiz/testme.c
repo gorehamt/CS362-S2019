@@ -12,10 +12,8 @@ char inputChar(int isString)
       charValue = possibleStringValues[rand() % 4];
     }
     else{ //get random ascii value
-      int asciiSetSize = 96; //not including number 0-31
+      int asciiSetSize = 96; //not including numbers 0-31
       charValue = (rand() % asciiSetSize) + 32; //ASCII 32 is space
-      //int asciiTotalValues = 128;
-      //charValue = rand() % asciiTotalValues;
     }
 
     return charValue;
@@ -38,30 +36,10 @@ char *inputString()
     return stringVal;
 }
 
-/*function without malloc
-char *inputString(char *string)
-{
-    int isString = 1; //true
-    //int sLength = 6;
-    //char *stringVal = malloc(sLength * sizeof(char));
-
-    //fill c-string with random chars
-    int i;
-    for (i = 0; i < 6; i++){
-      string[i] = inputChar(isString);
-    }
-    //put the null terminator at the end of the c-string
-    string[5] = '\0';
-
-    return string;
-}
-*/
-
 void testme()
 {
   int tcCount = 0;
   char *s;
-  //char string[6]; //for function without malloc
   char c;
   int state = 0;
   while (1) 
@@ -69,7 +47,6 @@ void testme()
     tcCount++;
     int isString = 0; //initialize isString variable to 0, false
     c = inputChar(isString);
-    //s = inputString(&string); //for function without malloc
     s = inputString();
     printf("Iteration %d: c = %c, s = %s, state = %d\n", tcCount, c, s, state);
 
