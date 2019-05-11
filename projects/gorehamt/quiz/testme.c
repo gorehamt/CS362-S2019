@@ -12,8 +12,10 @@ char inputChar(int isString)
       charValue = possibleStringValues[rand() % 4];
     }
     else{ //get random ascii value
-      int asciiTotalValues = 128;
-      charValue = rand() % asciiTotalValues;
+      int asciiSetSize = 96; //not including number 0-31
+      charValue = (rand() % asciiSetSize) + 32; //ASCII 32 is space
+      //int asciiTotalValues = 128;
+      //charValue = rand() % asciiTotalValues;
     }
 
     return charValue;
