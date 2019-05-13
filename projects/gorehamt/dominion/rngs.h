@@ -6,8 +6,13 @@
  * ----------------------------------------------------------------------- 
  */
 
+#ifndef _RNGS
+#define _RNGS
+
+/*
 #if !defined( _RNGS_ )
 #define _RNGS_
+*/
 
 double Random(void);
 void   PlantSeeds(long x);
