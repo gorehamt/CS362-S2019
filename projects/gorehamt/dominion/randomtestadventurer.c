@@ -28,9 +28,10 @@
 void testAdventurer(int player, struct gameState *G){
     
     int handPos = 2;
+    int bonus = -1;
     int cardEffectResult;
     //call card effect function with the adventurer card using the randomly generated inputs
-    cardEffectResult = cardEffect(adventurer, -1, -1, -1, &G, handPos, -1); //no choices or bonus for adventurer, thus -1
+    cardEffectResult = cardEffect(adventurer, -1, -1, -1, G, handPos, &bonus); //no choices or bonus for adventurer, thus -1
 
 }
 
