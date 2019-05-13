@@ -37,12 +37,12 @@ int main(int argc, char *argv[]){
     //srand(time(NULL));
 
     //initialize variables
-    int player, deckCount, discardCount, handCount;
-    //initialize cards
-    int k[10] = {adventurer, great_hall, village, minion, steward, cutpurse, embargo, tribute, smithy, council_room};
+    int player;
     //create a gameState
     struct gameState G;
-
+    
+    //int k[10] = {adventurer, great_hall, village, minion, steward, cutpurse, embargo, tribute, smithy, council_room};
+    
     printf("\n-----Random Testing of Adventurer Card-----\n");
 
     //begin randomization of gameState using the rngs.c functions
@@ -51,14 +51,16 @@ int main(int argc, char *argv[]){
 
     int n; //number of times to run the random tester
     int i;
-    for (n = 0; n < 2; n++) { //TRACI--change this to a larger number later
+    for (n = 0; n < 1; n++) { //TRACI--change this to a larger number later
         for (i = 0; i < sizeof(struct gameState); i++) {
             ((char*)&G)[i] = floor(Random() * 256);
         }
         player = floor(Random() * 2);
         G.deckCount[player] = floor(Random() * MAX_DECK);
         G.discardCount[player] = floor(Random() * MAX_DECK);
+        G.discard[player][G.discardCount[player]]; //TRACI--not sure about this logic
         G.handCount[player] = floor(Random() * MAX_HAND);
+        G.hand[player][G.handCount[player]]; //TRACI--not sure about this logic
         testAdventurer(player, &G);
     }
 
