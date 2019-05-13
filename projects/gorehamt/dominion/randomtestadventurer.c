@@ -7,10 +7,11 @@
 
 #include "dominion.h"
 #include "dominion_helpers.h"
-#include "rngs.h"
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
+#include <math.h> //floor
+#include "rngs.h"
 
 /***********************************************************************************
  * Function Name: generateRandomNumber
