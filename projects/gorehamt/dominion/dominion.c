@@ -681,6 +681,7 @@ int adventurerFunc(struct gameState *state, int *drawntreasure, int currentPlaye
 printf("Inside adventurer: K\n");
   while(*z-1>=0){
     printf("Inside adventurer: L\n");
+    printf("Discard count: %d and z value %d\n", state->discardCount[currentPlayer], *z);
 	  state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[*z-1]; // discard all cards in play that have been drawn
 	  *z=*z-1;
   }
