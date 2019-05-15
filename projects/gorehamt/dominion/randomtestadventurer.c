@@ -25,14 +25,26 @@
 }
 */
 
-void testAdventurer(int player, struct gameState *G){
+void testAdventurer(struct gameState *post){
+
+    //create a struct to save the gamestate prior to the cardEffect function being called
+    //and copy the current gamestate into that struct
+    struct gameState pre;
+    memcpy(&pre, post, sizeof(struct gameState));
     
+    //create variables needed to call cardEffect, but not needed for the adventurer implementation
     int handPos = 2;
     int bonus = -1;
     int cardEffectResult;
-    //call card effect function with the adventurer card using the randomly generated inputs
-    cardEffectResult = cardEffect(adventurer, -1, -1, -1, G, handPos, &bonus); //no choices or bonus for adventurer, thus -1
 
+    //call card effect function with the adventurer card using the randomly generated gamestate
+    cardEffectResult = cardEffect(adventurer, -1, -1, -1, post, handPos, &bonus); 
+
+    //check that the adventurer card was implemented correctly by comparing the pre and post states
+    assert(post->handCount + 2 == pre.handCount); //two treasure cards were added to the handcount
+
+    //check that the cardEffect function returned without an error
+    assert(cardEffectResult == 0);
 }
 
 int main(int argc, char *argv[]){
@@ -43,17 +55,18 @@ int main(int argc, char *argv[]){
     //create a gameState
     struct gameState G;
     
-    //int k[10] = {adventurer, great_hall, village, minion, steward, cutpurse, embargo, tribute, smithy, council_room};
-    
     printf("\n-----Random Testing of Adventurer Card-----\n");
 
     //begin randomization of gameState using the rngs.c functions
+    //Reference: The code used below is based on the code in in the testDrawCard.c example file 
+    //in the Dominion folder.
     SelectStream(2);
     PutSeed(3);
 
     int n; //number of times to run the random tester
     int i;
-    for (n = 0; n < 1; n++) { //TRACI--change this to a larger number later
+    for (n = 0; n < 5; n++) { //TRACI--change this to a larger number later
+        //fill the gameState with randomly generated input
         for (i = 0; i < sizeof(struct gameState); i++) {
             ((char*)&G)[i] = floor(Random() * 256);
         }
@@ -62,7 +75,7 @@ int main(int argc, char *argv[]){
         G.deckCount[player] = floor(Random() * MAX_DECK);
         G.discardCount[player] = floor(Random() * MAX_DECK);
         G.handCount[player] = floor(Random() * MAX_HAND);
-        testAdventurer(player, &G);
+        testAdventurer(&G);
     }
 
     printf ("ALL TESTS OK\n");
