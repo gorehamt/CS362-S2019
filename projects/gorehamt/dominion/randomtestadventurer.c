@@ -58,6 +58,7 @@ int main(int argc, char *argv[]){
             ((char*)&G)[i] = floor(Random() * 256);
         }
         player = floor(Random() * 2);
+        G.whoseTurn = player;
         G.deckCount[player] = floor(Random() * MAX_DECK);
         G.discardCount[player] = floor(Random() * MAX_DECK);
         G.handCount[player] = floor(Random() * MAX_HAND);
