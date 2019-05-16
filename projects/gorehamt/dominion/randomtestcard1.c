@@ -29,7 +29,7 @@ void testVillage(struct gameState *post){
     printf("In Village: C\n");
     int player = post->whoseTurn; //assign player to the current player whose turn it is
     post->hand[player][handPos] = village; //put the village card in the player's hand
-    
+
 printf("In Village: D\n");
     //call card effect function with the village card using the randomly generated gamestate
     cardEffectResult = cardEffect(village, -1, -1, -1, post, handPos, &bonus); 
@@ -77,6 +77,8 @@ int main(int argc, char *argv[]){
         G.deckCount[player] = floor(Random() * MAX_DECK);
         G.discardCount[player] = floor(Random() * MAX_DECK);
         G.handCount[player] = floor(Random() * MAX_HAND);
+        G.playedCards = G.deckCount[player]; //set the gamestate for played cards to the deckcount of the player in the gamestate
+        G.playedCardCount = 0; //initialize played card count to 0
         printf("In main: 4\n");
         G.numActions = 1; //1 per the specifications of the dominion.h file
         printf("In main: 5\n");
