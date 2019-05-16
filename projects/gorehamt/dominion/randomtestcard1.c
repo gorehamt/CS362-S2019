@@ -65,7 +65,7 @@ int main(int argc, char *argv[]){
 
     int n; //number of times to run the random tester
     int i;
-    for (n = 0; n < 1; n++) { 
+    for (n = 0; n < 20; n++) { 
         //fill the gameState with randomly generated input
         for (i = 0; i < sizeof(struct gameState); i++) {
             ((char*)&G)[i] = floor(Random() * 256);
