@@ -39,7 +39,7 @@ randomtestcard1: randomtestcard1.c dominion.o rngs.o
 randomtestcard2: randomtestcard2.c dominion.o rngs.o
 	gcc -o randomtestcard2 -g randomtestcard2.c dominion.o rngs.o $(CFLAGS)
 
-randomtestresults: randomtestadventurer randomtestcard1
+randomtestresults: randomtestadventurer randomtestcard1 randomtestcard2
 	./randomtestcard1
 	./randomtestcard2
 #	./randomtestadventurer #TRACI--add this back in later
