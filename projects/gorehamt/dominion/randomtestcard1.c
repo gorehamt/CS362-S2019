@@ -61,28 +61,21 @@ int main(int argc, char *argv[]){
     SelectStream(2);
     PutSeed(3);
 
-    printf("In main: 1\n");
-
     int n; //number of times to run the random tester
     int i;
-    for (n = 0; n < 20; n++) { 
+    for (n = 0; n < 2000; n++) { 
         //fill the gameState with randomly generated input
         for (i = 0; i < sizeof(struct gameState); i++) {
             ((char*)&G)[i] = floor(Random() * 256);
         }
-        printf("In main: 2\n");
         player = floor(Random() * 2);
         G.whoseTurn = player;
-        printf("In main: 3\n");
         G.deckCount[player] = floor(Random() * MAX_DECK);
         G.discardCount[player] = floor(Random() * MAX_DECK);
         G.handCount[player] = floor(Random() * MAX_HAND);
         G.playedCardCount = 0; //initialize played card count to 0 per how the game is initialized in dominion.c
-        printf("In main: 4\n");
         G.numActions = 1; //1 per the specifications of the dominion.h file
-        printf("In main: 5\n");
         testVillage(&G);
-        printf("In main: 6\n");
     }
 
     printf ("ALL TESTS OK\n");
