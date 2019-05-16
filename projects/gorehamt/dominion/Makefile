@@ -33,8 +33,12 @@ runtests: testDrawCard
 randomtestadventurer: randomtestadventurer.c dominion.o rngs.o
 	gcc -o randomtestadventurer -g randomtestadventurer.c dominion.o rngs.o $(CFLAGS)
 
-randomtestresults: randomtestadventurer
-	./randomtestadventurer
+randomtestcard1: randomtestcard1.c dominion.o rngs.o
+	gcc -o randomtestcard1 -g randomtestcard1.c dominion.o rngs.o $(CFLAGS)
+
+randomtestresults: randomtestadventurer randomtestcard1
+	./randomtestcard1
+#	./randomtestadventurer #TRACI--add this back in later
 
 
 
@@ -46,3 +50,4 @@ all: playdom player
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
 	rm -f randomtestadventurer
+	rm -f randomtestcard1
