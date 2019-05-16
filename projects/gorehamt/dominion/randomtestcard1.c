@@ -15,34 +15,27 @@
 
 void testVillage(struct gameState *post){
 
-    printf("In Village: A\n");
     //create a struct to save the gamestate prior to the cardEffect function being called
     //and copy the current gamestate into that struct
     struct gameState pre;
     memcpy(&pre, post, sizeof(struct gameState));
-    printf("In Village: B\n");
     
     //create variables needed to call cardEffect
     int handPos = 0;
     int bonus = -1;
     int cardEffectResult;
-    printf("In Village: C\n");
     int player = post->whoseTurn; //assign player to the current player whose turn it is
     post->hand[player][handPos] = village; //put the village card in the player's hand
 
-printf("In Village: D\n");
     //call card effect function with the village card using the randomly generated gamestate
     cardEffectResult = cardEffect(village, -1, -1, -1, post, handPos, &bonus); 
-printf("In Village: E\n");
+    
     //check that the village card was implemented correctly by comparing the pre and post states
     assert(post->handCount[player] == pre.handCount[player]); //one card added to handcount but village card discarded
-    printf("In Village: F\n");
     assert(post->numActions == pre.numActions + 2); //two actions were added
-    printf("In Village: G\n");
+    
     //check that the cardEffect function returned without an error
     assert(cardEffectResult == 0);
-
-    printf("In Village: H\n");
 }
 
 int main(int argc, char *argv[]){
