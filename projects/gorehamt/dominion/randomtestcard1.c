@@ -77,8 +77,7 @@ int main(int argc, char *argv[]){
         G.deckCount[player] = floor(Random() * MAX_DECK);
         G.discardCount[player] = floor(Random() * MAX_DECK);
         G.handCount[player] = floor(Random() * MAX_HAND);
-        G.playedCards = G.deckCount[player]; //set the gamestate for played cards to the deckcount of the player in the gamestate
-        G.playedCardCount = 0; //initialize played card count to 0
+        G.playedCardCount = 0; //initialize played card count to 0 per how the game is initialized in dominion.c
         printf("In main: 4\n");
         G.numActions = 1; //1 per the specifications of the dominion.h file
         printf("In main: 5\n");
