@@ -35,7 +35,7 @@ printf("In Village: D\n");
     cardEffectResult = cardEffect(village, -1, -1, -1, post, handPos, &bonus); 
 printf("In Village: E\n");
     //check that the village card was implemented correctly by comparing the pre and post states
-    assert(post->handCount[player] == pre.handCount[player] + 1); //one card added to handcount
+    assert(post->handCount[player] == pre.handCount[player]); //one card added to handcount but village card discarded
     printf("In Village: F\n");
     assert(post->numActions == pre.numActions + 2); //two actions were added
     printf("In Village: G\n");
