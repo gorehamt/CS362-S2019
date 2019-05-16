@@ -80,7 +80,17 @@ int main(int argc, char *argv[]){
         }
         player = floor(Random() * 2);
         G.whoseTurn = player;
-        G.deckCount[player] = floor(Random() * MAX_DECK);
+        G.deckCount[player] = floor(Random() * (MAX_DECK - 8)) + 8; //to ensure room for 7 coppers
+        printf("Deck Count is %d\n", G.deckCount[player]);
+
+        //need to add 7 coppers to the player's deck to work with the way adventurer code is written
+        int k, j;
+        for (k = 0; k < 7; k++){
+            j = floor(Random() * MAX_DECK);
+            if (G.deck[player][j] != j)
+                G.deck[player][j] = copper;
+        }
+      
         G.discardCount[player] = floor(Random() * MAX_DECK);
         G.handCount[player] = floor(Random() * MAX_HAND);
         testAdventurer(&G);
