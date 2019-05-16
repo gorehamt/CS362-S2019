@@ -27,6 +27,7 @@
 
 void testAdventurer(struct gameState *post){
 
+    printf ("Got here: A\n");
     //create a struct to save the gamestate prior to the cardEffect function being called
     //and copy the current gamestate into that struct
     struct gameState pre;
@@ -38,11 +39,18 @@ void testAdventurer(struct gameState *post){
     int cardEffectResult;
     int player = post->whoseTurn;
 
+    printf ("Got here: B\n");
+
     //call card effect function with the adventurer card using the randomly generated gamestate
     cardEffectResult = cardEffect(adventurer, -1, -1, -1, post, handPos, &bonus); 
 
+    printf ("Got here: C\n");
+    printf ("post->handcount is %d and pre.handCount is %d\n", post->handCount[player], pre.handCount[player]);
+
     //check that the adventurer card was implemented correctly by comparing the pre and post states
     assert(post->handCount[player] == pre.handCount[player] + 2); //two treasure cards were added to the handcount
+
+    printf ("Got here: D\n");
 
     //check that the cardEffect function returned without an error
     assert(cardEffectResult == 0);
@@ -74,6 +82,7 @@ int main(int argc, char *argv[]){
         player = floor(Random() * 2);
         G.whoseTurn = player;
         G.deckCount[player] = floor(Random() * (MAX_DECK - 8)) + 8; //to ensure room for 7 coppers
+        printf("Deck Count is %d\n", G.deckCount[player]);
 
         //need to add 7 coppers to the player's deck to work with the way adventurer code is written
         int k, j;
