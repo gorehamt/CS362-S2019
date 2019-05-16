@@ -22,12 +22,14 @@ void testVillage(struct gameState *post){
     memcpy(&pre, post, sizeof(struct gameState));
     printf("In Village: B\n");
     
-    //create variables needed to call cardEffect, but not needed for the village implementation
-    int handPos = 2;
+    //create variables needed to call cardEffect
+    int handPos = 0;
     int bonus = -1;
     int cardEffectResult;
     printf("In Village: C\n");
-    int player = post->whoseTurn;
+    int player = post->whoseTurn; //assign player to the current player whose turn it is
+    post->hand[player][handPos] = village; //put the village card in the player's hand
+    
 printf("In Village: D\n");
     //call card effect function with the village card using the randomly generated gamestate
     cardEffectResult = cardEffect(village, -1, -1, -1, post, handPos, &bonus); 
