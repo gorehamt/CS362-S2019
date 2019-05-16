@@ -48,7 +48,7 @@ void testAdventurer(struct gameState *post){
     printf ("post->handcount is %d and pre.handCount is %d\n", post->handCount[player], pre.handCount[player]);
 
     //check that the adventurer card was implemented correctly by comparing the pre and post states
-    assert(post->handCount[player] + 2 == pre.handCount[player]); //two treasure cards were added to the handcount
+    assert(post->handCount[player] == pre.handCount[player] + 2); //two treasure cards were added to the handcount
 
     printf ("Got here: D\n");
 
