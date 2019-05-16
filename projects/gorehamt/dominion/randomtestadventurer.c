@@ -37,6 +37,7 @@ void testAdventurer(struct gameState *post){
     int handPos = 2;
     int bonus = -1;
     int cardEffectResult;
+    int player = post->whoseTurn;
 
     printf ("Got here: B\n");
 
@@ -44,10 +45,10 @@ void testAdventurer(struct gameState *post){
     cardEffectResult = cardEffect(adventurer, -1, -1, -1, post, handPos, &bonus); 
 
     printf ("Got here: C\n");
-    printf ("post->handcount is %d and pre.handCount is %d\n", post->handCount, pre.handCount);
+    printf ("post->handcount is %d and pre.handCount is %d\n", post->handCount[player], pre.handCount[player]);
 
     //check that the adventurer card was implemented correctly by comparing the pre and post states
-    assert(post->handCount + 2 == pre.handCount); //two treasure cards were added to the handcount
+    assert(post->handCount[player] + 1 == pre.handCount[player]); //two treasure cards were added to the handcount minus the card discarded
 
     printf ("Got here: D\n");
 
