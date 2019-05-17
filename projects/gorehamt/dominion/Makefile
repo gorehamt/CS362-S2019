@@ -46,7 +46,7 @@ randomtestresults: randomtestadventurer randomtestcard1 randomtestcard2
 	./randomtestcard2 >> randomtestresults.out
 	gcov -b dominion.c >> randomtestresults.out
 
-	./randomtestadventurer 
+	./randomtestadventurer >> randomtestresults.out
 	gcov -b dominion.c >> randomtestresults.out
 
 player: player.c interface.o
