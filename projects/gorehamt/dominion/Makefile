@@ -40,9 +40,14 @@ randomtestcard2: randomtestcard2.c dominion.o rngs.o
 	gcc -o randomtestcard2 -g randomtestcard2.c dominion.o rngs.o $(CFLAGS)
 
 randomtestresults: randomtestadventurer randomtestcard1 randomtestcard2
-	./randomtestcard1
-	./randomtestcard2
-#	./randomtestadventurer #TRACI--add this back in later
+	./randomtestcard1 > randomtestresults.out
+	gcov -b dominion.c >> randomtestresults.out
+
+	./randomtestcard2 >> randomtestresults.out
+	gcov -b dominion.c >> randomtestresults.out
+
+	./randomtestadventurer 
+	gcov -b dominion.c >> randomtestresults.out
 
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
@@ -51,6 +56,4 @@ all: playdom player
 
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
-	rm -f randomtestadventurer
-	rm -f randomtestcard1
-	rm -f randomtestcard2
+	rm -f randomtestadventurer randomtestcard1 randomtestcard2 randomtestresults.out
