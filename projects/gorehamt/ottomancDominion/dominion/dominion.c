@@ -709,7 +709,7 @@ int smithyEffect(struct gameState *state, int currentPlayer, int handPos)
   for (i = 0; i < 3; i++)
 	{
 	  drawCard(currentPlayer, state);
-    drawCard(currentPlayer, state);
+	//drawCard(currentPlayer, state); //remove line b/c it is the source of error
 	}
 			
   //discard card from hand
