@@ -75,7 +75,7 @@ int main(){
 
     /*Test 1: Verify that the current player receives exactly one card.*/
     printf("\nTesting that current player's hand size increases by exactly 2 cards after smithy card is played (+3 b/c smithy played, -1 b/c smithy was discarded, for a total of 2 extra cards).\n");
-    if (currentPHandSizeAfter + 2 == currentPHandSizeBefore){ 
+    if (currentPHandSizeAfter == currentPHandSizeBefore + 2){ 
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
     }
     else{
@@ -84,7 +84,7 @@ int main(){
 
     /*Test 2: Verify that extra card comes from current player's pile*/
     printf("\nTesting that the extra cards come from current player's deck.\n");
-    if (currentPDeckCountAfter - 3 == currentPDeckCountBefore){
+    if (currentPDeckCountAfter == currentPDeckCountBefore - 3){
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
     }
     else{
