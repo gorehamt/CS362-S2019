@@ -723,6 +723,9 @@ int villageEffect(struct gameState *state, int currentPlayer, int handPos)
 {
   //+1 Card
   drawCard(currentPlayer, state);
+
+  //Line of code added to fix the error: +2 Actions
+  state->numActions = state->numActions + 2;
 			
   //discard played card from hand
   discardCard(handPos, currentPlayer, state, 0);
