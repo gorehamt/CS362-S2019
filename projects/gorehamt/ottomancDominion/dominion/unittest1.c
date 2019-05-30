@@ -79,8 +79,8 @@ int main(){
     printf("\n------When there are two treasure cards to add to player's hand------\n");
 
     /*Test 1: Verify that if the current player adds two cards to his/her hand.*/
-    printf("\nTesting that current player's hand size increases by exactly 1 card after adventurer card is played (+2 b/c adventurer played, -1 b/c adventurer was discarded, for a total of 1 extra card).\n");
-    if (currentPHandSizeAfter1 == currentPHandSizeBefore1 + 1){ 
+    printf("\nTesting that current player's hand size increases by exactly 2 card after adventurer card is played.\n");
+    if (currentPHandSizeAfter1 == currentPHandSizeBefore1 + 2){ 
         printf("\tTEST SUCCESSFULLY COMPLETED\n");
     }
     else{
@@ -112,21 +112,6 @@ int main(){
     }
     else{
         printf("\tTEST FAILED: The supply count has changed for one or more kingdom cards or victory cards\n");
-    }
-
-    /*Test 5: Verify that the cards taken from player's hand and not added to the player's deck are now in the player's discard pile*/
-    printf("\nTesting that the cards taken from the player's hand and not added to the player's deck (non-treasure cards) are now in the player's discard pile.\n");
-    if ((currentPDeckCountBefore1 + currentPDiscardCountBefore1) == (currentPDeckCountAfter1 + currentPDiscardCountAfter1 - 2)){ //-2 because 2 treasure cards should now be added to hand count
-        printf("\tTEST SUCCESSFULLY COMPLETED\n");
-    }
-    else{
-        int totalCardsNotInHandBefore = currentPDeckCountBefore1 + currentPDiscardCountBefore1;
-        int totalCardsNotInHandAfter = currentPDeckCountAfter1 + currentPDiscardCountAfter1;
-        printf("\tTEST FAILED: Deck count and discard count before was %d, and deck count and discard count after was %d\n", totalCardsNotInHandBefore, totalCardsNotInHandAfter);
-        printf("\tDeck count before: %d\n", currentPDeckCountBefore1);
-        printf("\tDiscard count before: %d\n", currentPDiscardCountBefore1);
-        printf("\tDeck count after: %d\n", currentPDeckCountAfter1);
-        printf("\tDiscard count after: %d\n", currentPDiscardCountAfter1);
     }
     
     return 0;
