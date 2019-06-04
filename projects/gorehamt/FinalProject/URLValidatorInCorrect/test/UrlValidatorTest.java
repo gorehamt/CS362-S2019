@@ -54,16 +54,7 @@ protected void setUp() {
         testIsValid(testUrlPartsOptions, options);
    }
    
-   public void testUrlsFromFile() throws FileNotFoundException {
-	   
-	   Scanner s = new Scanner(new File("testUrls.txt"));
-	   while (s.hasNext()){
-		      //UrlValidator urlVal = new UrlValidator(schemes, 0);
-		   System.out.println(s.next());
-	   }
-	   s.close();
-   }
-
+   
    public void testIsValidScheme() {
       if (printStatus) {
          System.out.print("\n testIsValidScheme() ");
@@ -140,6 +131,21 @@ protected void setUp() {
       }
    }
 
+   /* Name: testUrlsFromFile
+    * Description: Unit tests for Group Project, Part B, Unit Tests
+    * This test will test the Urls in testUrls.txt.
+    */
+   public void testUrlsFromFile() throws FileNotFoundException {
+	   Scanner s = new Scanner(new File("testUrls.txt"));
+	   while (s.hasNext()){
+		   UrlValidator urlValidator = new UrlValidator();
+	       assertTrue(urlValidator.isValid(s.next()));
+		   //System.out.println(s.next());
+	   }
+	   s.close();
+   }
+
+   
    public void testValidator202() {
        String[] schemes = {"http","https"};
        UrlValidator urlValidator = new UrlValidator(schemes, UrlValidator.NO_FRAGMENTS);
