@@ -15,6 +15,11 @@
  * limitations under the License.
  */
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 import junit.framework.TestCase;
 
 /**
@@ -47,6 +52,16 @@ protected void setUp() {
                 + UrlValidator.NO_FRAGMENTS;
 
         testIsValid(testUrlPartsOptions, options);
+   }
+   
+   public void testUrlsFromFile() throws FileNotFoundException {
+	   
+	   Scanner s = new Scanner(new File("testUrls.txt"));
+	   while (s.hasNext()){
+		      //UrlValidator urlVal = new UrlValidator(schemes, 0);
+		   System.out.println(s.next());
+	   }
+	   s.close();
    }
 
    public void testIsValidScheme() {
