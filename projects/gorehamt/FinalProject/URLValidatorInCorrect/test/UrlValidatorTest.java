@@ -142,8 +142,6 @@ protected void setUp() {
 		   String url = s.next();
 		   System.out.println(url);
 		   assertTrue(urlValidator.isValid(url));
-	       //assertTrue(urlValidator.isValid(s.next()));
-		   //System.out.println(s.next());
 	   }
 	   s.close();
    }
