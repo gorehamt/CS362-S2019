@@ -139,7 +139,10 @@ protected void setUp() {
 	   Scanner s = new Scanner(new File("testUrls.txt"));
 	   while (s.hasNext()){
 		   UrlValidator urlValidator = new UrlValidator();
-	       assertTrue(urlValidator.isValid(s.next()));
+		   String url = s.next();
+		   System.out.println(url);
+		   assertTrue(urlValidator.isValid(url));
+	       //assertTrue(urlValidator.isValid(s.next()));
 		   //System.out.println(s.next());
 	   }
 	   s.close();

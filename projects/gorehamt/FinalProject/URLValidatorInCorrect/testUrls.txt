@@ -1718,7 +1718,6 @@ http://www.euro4arab.com/
 http://www.euromedrights.net/
 http://www.evemodels.com/
 http://www.extratorrent.com/
-https://www.facebook.com//waad.bh
 https://www.facebook.com/ArabAtheistBroadcasting/
 https://www.facebook.com/Bahrain.Salvation.Movement
 https://www.facebook.com/Dr.AhmadNofal/
@@ -2872,7 +2871,6 @@ http://floresdegoias.go.gov.br/site/index.php
 http://folha.arcauniversal.com.br/
 http://folha.uol.com.br/
 http://folhapolitica.jusbrasil.com.br/noticias/126272111/ponde-diz-que-novo-decreto-de-dilma-e-golpe-de-estado-totalitario-e-faz-alerta-assista
-https://foodiesfeed.com//
 http://foradilmaadesivos.blogspot.com/
 http://fortalezadosnogueiras.ma.gov.br/
 http://fortalezadotabocao.to.gov.br/
@@ -3111,7 +3109,7 @@ http://normandia.rr.gov.br/transparencia/portal/
 http://nos.twnsnd.co/
 http://nosmulheresdaperiferia.com.br/
 http://nossacarasp.blogspot.com/
-"http://noticias.terra.com.br/brasil/em-que-pe-esta-o-pedido-de-impeachment-contra-michel-temer
+http://noticias.terra.com.br/brasil/em-que-pe-esta-o-pedido-de-impeachment-contra-michel-temer
 http://noticias.uol.com.br/ultimas-noticias/agencia-estado/2016/05/22/manifestantes-contra-temer-se-reunem-no-centro-do-rio.htm
 http://noticiasemtransito.blogspot.com.br/
 http://novapalmeira.pb.gov.br/
@@ -6370,7 +6368,7 @@ http://www.eurasianet.org/
 http://www.facebook.com/pages/%e5%a4%a9%e5%ae%89%e9%96%80%e6%af%8d%e8%a6%aa-tiananmen-mothers/52119319766
 http://www.falundafa.org/
 http://www.fccchina.org/
-"http://www.fidh.org/-china
+http://www.fidh.org/-china
 http://www.fidh.org/-english-
 http://www.fordfoundation.org/
 http://www.fordfoundation.org/regions/china/grant-making
@@ -8057,7 +8055,7 @@ http://telecom.net.et/~ena/
 http://web.amnesty.org/
 http://web.amnesty.org/library/eng-eth/index
 http://web.worldbank.org/
-"http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/AFRICAEXT/ETHIOPIAEXTN/0
+http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/AFRICAEXT/ETHIOPIAEXTN/0
 http://www.addisferengi.net/
 http://www.addisnegeronline.com/
 http://www.addistribune.com/
@@ -10571,7 +10569,6 @@ http://getahead.rediff.com/report/2010/aug/26/career-trouble-brewing-for-indian-
 http://givemetheheadlines.wordpress.com/2012/07/29/hindus-kill-muslims-in-india-44-dead-170000-made-homeless/
 http://gogrumogru.com/
 http://google.co.in/search?q=telegraphkolkatat2/20march2012&hl=en&prmd=imvns&source=inms&tbm=isch&ei=yvbqt-wxfthjrae5s5mdag&sa=x&oi=modelink&ct=mode&cd=2&ved=0cbuqau0aq&biw=1843&bih=959
-http://google0.ingo/
 http://gr8click.com/
 http://harishc.blogspot.in/2011/06/caravan-iipm-article.html
 http://high-court.com/
@@ -10748,7 +10745,6 @@ http://www.astrospeak.com/
 http://www.astroyogi.com/
 http://www.atjehcyber.net/
 http://www.aware-group.com/
-http://www.barandbench.com/brief//1804/delhi-hc-seeks-response-from-supreme-court-lawyer-for-criticizing-judge-
 http://www.bbc.com/news/world-south-asia-13170914
 http://www.bdcburma.org/activitiesdetails.asp?id=201
 http://www.bhandafodu.blogspot.com/
@@ -11487,7 +11483,6 @@ http://iran.mojahedin.org/
 http://iranefardalive.com/
 http://iranefardanews.com/
 http://iranfocus.com/
-http://irangreenvoice.com//
 http://iranhr.net/fa/
 http://iraniandevelopment.blogspot.com/
 http://iranianstoday.com/
@@ -11840,7 +11835,7 @@ http://www.drrostamian.ir/
 http://www.drsalahi.ir/
 http://www.drsoleimani.ir/
 http://www.drtala.com/
-"http://www.dw-world.de/dw/0
+http://www.dw-world.de/dw/0
 https://www.dw.com/fa-ir/
 http://www.ebtekarnews.com/
 http://www.ecoworld-mag.com/
@@ -12791,7 +12786,7 @@ http://vibeweekly.com/
 http://vitukali.com/
 http://vitukokenya.com/
 http://whive.com/home.php
-"https://wikileaks.org/wiki/Kenya:_The_Cry_of_Blood_-_Report_on_Extra-Judicial_Killings_and_Disappearances
+https://wikileaks.org/wiki/Kenya:_The_Cry_of_Blood_-_Report_on_Extra-Judicial_Killings_and_Disappearances
 https://wikileaks.org/wiki/Murder_in_Nairobi:_Wikileaks_related_human_rights_lawyers_assassinated
 http://womenontherun.se/node/42
 http://www.afrakenya.org/
@@ -12862,7 +12857,7 @@ https://www.the-star.co.ke/
 http://www.the-star.co.ke/news/2015/12/11/ti-bribes-report-shows-kenya-police-judiciary-among-most-corrupt_c1259309
 http://www.theeastafrican.co.ke/
 http://www.tikenya.org/
-"http://www.time.com/time/world/article/0
+http://www.time.com/time/world/article/0
 http://www.transgenderkenya.com/
 http://www.uchaguzi.co.ke/
 http://www.wangukanjafoundation.org/
@@ -13756,7 +13751,7 @@ https://www.yasarang.net/
 http://www.yesno.or.kr/
 http://www.yonhapnews.co.kr/
 http://www.zdnetasia.com/
-"http://www.zdnetasia.com/downloads/pc/swinfo/0
+http://www.zdnetasia.com/downloads/pc/swinfo/0
 http://xxxkor77.info/
 http://yesfile.com/
 http://yolsa.org/
@@ -14546,7 +14541,6 @@ https://vz.ru/
 http://www.fresher.ru/
 https://rus.azattyq.org/
 https://www.azattyq.org/
-https://azatkaz.info/b/https://www.azattyq.org/?src=p2
 https://forbes.kz/
 https://www.kaztag.kz/
 http://azh.kz/
@@ -15178,7 +15172,7 @@ http://www.curaj.net/
 http://www.customs.tiraspol.net/
 http://www.dejure.md/index.php
 http://www.dnt.md/
-"http://www.dw-world.de/dw/0
+http://www.dw-world.de/dw/0
 http://www.e-democracy.md/
 http://www.eac.md/
 http://www.echo.msk.ru/
@@ -16477,7 +16471,7 @@ http://shuhood.org/news/121/
 http://sjs429.jeeran.com/
 http://snesup.blogspot.com/
 http://soft.arabdl.com/
-"http://tamazgha.fr/CERD-considers-report-of-Mauritania
+http://tamazgha.fr/CERD-considers-report-of-Mauritania
 http://tasaly.ueuo.com/
 http://today.reuters.com/
 http://today.reuters.com/news/crisesmap.aspx?region=middleeast
@@ -16801,7 +16795,7 @@ http://www.sodomylaws.org/
 http://www.soninkara.com/
 http://www.soninkara.org/culture-soninke/
 http://www.spiegel.de/
-"http://www.spiegel.de/international/spiegel/0
+http://www.spiegel.de/international/spiegel/0
 http://www.state.gov/g/drl/rls/hrrpt/2006/78746.htm
 http://www.state.gov/g/drl/rls/hrrpt/2007/100493.htm
 http://www.sx-education.org/
@@ -17553,7 +17547,7 @@ http://www.yawa.org/
 http://www.yss98.com/
 http://www.ytl.com.my/
 http://www.zdnetasia.com/
-"http://www.zdnetasia.com/downloads/pc/swinfo/0
+http://www.zdnetasia.com/downloads/pc/swinfo/0
 http://yasminthestoryteller.blogspot.com/
 http://zathilfiger.i-p.com/
 http://zorro-zorro-unmasked.blogspot.com/
@@ -19134,7 +19128,7 @@ http://web.amnesty.org/
 http://web.amnesty.org/library/Index/engASA330181999
 http://web.amnesty.org/report2003/pak-summary-eng
 http://web.worldbank.org/
-"http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/SOUTHASIAEXT/EXTSAREGTOPHEANUT/EXTSAREGTOPHIVAIDS/0
+http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/SOUTHASIAEXT/EXTSAREGTOPHEANUT/EXTSAREGTOPHIVAIDS/0
 http://wtunnel.com/
 http://wtunnel.net/
 http://www.24Proxy.com/
@@ -20768,7 +20762,7 @@ http://uncyclopedia.wikia.com/wiki/main_page
 http://vdagestan.com/
 http://vdagestan.info/
 http://video-one.com/
-http://video.mivzakon.co.il/9siLUt8iuJE/ПОСЛЕДНИЕ_СОБЫТИЯ_Ислямов_о_крымскотатарском_батальоне_энергетической_блокаде_и_контрабанде.html
+http://video.mivzakon.co.il/9siLUt8iuJE/ÐŸÐžÐ¡Ð›Ð•Ð”Ð�Ð˜Ð•_Ð¡ÐžÐ‘Ð«Ð¢Ð˜Ð¯_Ð˜Ñ�Ð»Ñ�Ð¼Ð¾Ð²_Ð¾_ÐºÑ€Ñ‹Ð¼Ñ�ÐºÐ¾Ñ‚Ð°Ñ‚Ð°Ñ€Ñ�ÐºÐ¾Ð¼_Ð±Ð°Ñ‚Ð°Ð»ÑŒÐ¾Ð½Ðµ_Ñ�Ð½ÐµÑ€Ð³ÐµÑ‚Ð¸Ñ‡ÐµÑ�ÐºÐ¾Ð¹_Ð±Ð»Ð¾ÐºÐ°Ð´Ðµ_Ð¸_ÐºÐ¾Ð½Ñ‚Ñ€Ð°Ð±Ð°Ð½Ð´Ðµ.html
 http://vk.com/
 http://vk.com/minitrue
 http://vresearche.com/
