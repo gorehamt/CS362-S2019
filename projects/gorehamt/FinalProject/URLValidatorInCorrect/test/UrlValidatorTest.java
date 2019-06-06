@@ -124,6 +124,139 @@ protected void setUp() {
          System.out.println();
       }
    }
+   
+   /* Name: testRandomUrls
+    * Description: Random tests for Group Project, Part B, Random Tests
+    * This test will randomly sample elements from the input set to build 
+    * a composite URL for testing.
+    * NOTE: THIS IS ESSENTIALLY A "RANDOMIZER" FLAVOR OF testIsValid.
+    * If run enough times, this method would eventually cover all the same
+    * URLs as testIsValid; the only difference would be the order in which
+    * they are tested. testIsValid *WAS* used an a guiding example for 
+    * developing this method, thus, some portions of code will be similar or
+    * identical. 
+    * 
+    * NOTE TO TRACI AND COLLEEN: It might be a good idea for us to add more
+    * ResultPairs to the test data; that wouldn't make this test superior to
+    * testIsValid, but it would improve both of them equally and test more
+    * possible URLs.
+    * 
+    * If we do, it will be BY HAND and the new members <INSERT HERE> must be
+    * updated to match the number of elements in each array of ResultPairs.
+    */
+   
+   public void testRandomUrls()//eventually I will need parameters; tbd as developed
+   {
+	    UrlValidator urlVal = new UrlValidator();		//for now only test with defaults; consider testing with options later
+	    
+	    //check a common, known URL first
+	    assertTrue(urlVal.isValid("http://www.google.com"));
+	    assertTrue(urlVal.isValid("http://www.google.com/"));
+	    
+	    //Loop to test 10,000 random URLs CURRENTLY ONLY FIVE FOR RUNNING CODE DURING DEV
+	    for (int testIndex = 0; testIndex < 10000; ++testIndex) {
+	    	StringBuilder randomBuffer = new StringBuilder();
+	    	boolean expected = true;
+	    	
+	    	int randomIndex;
+	    	
+	    	/*NOTE TO SELF FOR IMPROVEMENT: the following is bad practice; really these arrays need
+	    	 * to get bundled up into a class that has a length member so the num elements of the
+	    	 * array can be initialized once and used all over, but in the interest of not
+	    	 * screwing over testIsValid, this workaround will do.*/
+	    	
+	    	/*QUESTION TO SELF: What stops us from making a new member of the UrlValidatorTest class
+	    	 * that is literally the number of elements of the arrays; I mean, testIsValid wouldn't
+	    	 * use them but it wouldn't bother it either...*/
+	    	//Pick random components from each set of ResultPairs
+	    	randomIndex = (int) (Math.random() * 8);					//9 elements; 0 - 8
+	    	randomBuffer.append(testUrlScheme[randomIndex].item);
+	    	expected &= testUrlScheme[randomIndex].valid;
+	    	
+	    	randomIndex = (int) (Math.random() * 20);					//20 elements; 0 - 19
+	    	randomBuffer.append(testUrlAuthority[randomIndex].item);
+	    	expected &= testUrlAuthority[randomIndex].valid;
+	    	
+	    	randomIndex = (int) (Math.random() * 9);					//9 elements; 0 - 8
+	    	randomBuffer.append(testUrlPort[randomIndex].item);
+	    	expected &= testUrlPort[randomIndex].valid;
+	    	
+	    	randomIndex = (int) (Math.random() * 10);					//10 elements; 0 - 9
+	    	randomBuffer.append(testPath[randomIndex].item);
+	    	expected &= testPath[randomIndex].valid;
+	    	
+	    	randomIndex = (int) (Math.random() * 3);					//3 elements; 0 - 2
+	    	randomBuffer.append(testUrlQuery[randomIndex].item);
+	    	expected &= testUrlQuery[randomIndex].valid;
+	    	
+	    	String url = randomBuffer.toString();
+	    	boolean result = urlVal.isValid(url);
+	    	if (result == expected){
+	    		System.out.print(".");
+	    	}
+	    	else {
+	    		System.out.println("FAIL: " + url);
+	    	}
+	    	//ASSERT BREAKS EXECUTION; 
+	    	//assertEquals(url, expected, result);
+	    }
+	    	
+	    
+	   //add code here
+   }
+   
+   /*ONE ALTERNATIVE RANDOM TESTER (pseudocode):
+    * public void testRandomUrls(//pass a different set of "seed" ResultPair arrays){
+    * 	//call schemeRandomTest() a number of times (say, 1000) [or have it loop internally]
+    * 	//call authorityRandomTest() a number of times (say, 1000) [or have it loop internally]
+    * 	//call portRandomTest() a number of times (say, 1000) [or have it loop internally]
+    * 	//call pathRandomTest() a number of times (say, 1000) [or have it loop internally]
+    * 	//call quereyRandomTest() a number of times (say, 1000) [or have it loop internally]
+    * }
+    * 
+    * In the sub-methods:
+    * The only component that will change will be the one named. So for instance, in schemeRandomTest,
+    * the test should run a number of times, but the only component that will change is the scheme, and
+    * in portRandomTest, only the port number will change. Each sub-method will then combine the random
+    * component with components that stay the same across each test, call isValid, then compare the
+    * result to the known state of the URL.
+    * 
+    * The variable components will be randomly generated:
+    * So, for instance, port can be randomly generated using a random number generator and then that
+    * randomly generated value can be tested to know if it is valid or invalid. Another example, the 
+    * scheme can be randomized by randomly selecting a string from a list of known valid schemes, then
+    * running it through a scrambler and comparing the "scrambled" version back to the original (for most
+    * there should only be one valid configuration) to ascertain whether it is valid or not.
+    * 
+    * THIS VERSION ISOLATES VARIABLES TO ALLOW EASIER COMPARISON OF FAILURES 
+    * */
+   
+   /*ANOTHER ALTERNATIVE RANDOM TESTER (pseudocode):
+    * public void testRandomUrls(//pass a different set of "seed" ResultPair arrays){
+    * 	//generate a random scheme (string; scrambled)
+    * 	//generate a random authority (possibly just sample from a list; maybe scramble?)
+    * 	//generate a random port (int; random generated)
+    * 	//generate a random path (possibly just sample from a list; maybe scramble?)
+    * 	//generate a random query (possibly just sample from a list; maybe scramble?)
+    * 
+    * 	//(Just like in testIsValid)
+    * 	//build a URL out of all these randomized components (use same bit mask technique to establish valid
+    * 	//	or invalid)
+    * 	//run random URL through isValid
+    * 	//compare result to the known state of the URL
+    * 
+    * }
+    * 
+    * 
+    * The components will be randomly generated:
+    * So, for instance, port can be randomly generated using a random number generator and then that
+    * randomly generated value can be tested to know if it is valid or invalid. Another example, the 
+    * scheme can be randomized by randomly selecting a string from a list of known valid schemes, then
+    * running it through a scrambler and comparing the "scrambled" version back to the original (for most
+    * there should only be one valid configuration) to ascertain whether it is valid or not.
+    * 
+    * THIS VERSION CREATES A FULLY RANDOM URL EVERY TIME; MAY BE DIFFICULT TO CORRELATE BETWEEN FAILING CASES
+    * */
 
    public void testValidator202() {
        String[] schemes = {"http","https"};
