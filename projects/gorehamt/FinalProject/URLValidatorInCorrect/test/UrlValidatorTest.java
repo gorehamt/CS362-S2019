@@ -134,6 +134,8 @@ protected void setUp() {
     * Description: Unit tests for Group Project, Part B
     * This function will test the URLs in testUrls.txt. It will also test
     * 5 invalid URLs that violate each piece of the URL format.
+    * Reference for how to read strings in from a file: 
+    * https://stackoverflow.com/questions/5343689/java-reading-a-file-into-an-arraylist
     */
    public void testUrlsFromFile() throws FileNotFoundException {
 	   Scanner s = new Scanner(new File("testUrls.txt"));
