@@ -647,7 +647,32 @@ protected void setUp() {
                                new ResultPair("http:/", false),
                                new ResultPair("http:", false),
                                new ResultPair("http/", false),
-                               new ResultPair("://", false)};
+                               new ResultPair("://", false),
+                               new ResultPair("ldap://", true),
+                               new ResultPair("telnet://", true),
+                               new ResultPair("afs://", true),
+                               new ResultPair("amss://", true),
+                               new ResultPair("blob://", true),
+                               new ResultPair("chrome://", true),
+                               new ResultPair("data://", true),
+                               new ResultPair("example://", true),
+                               new ResultPair("file://", true),
+                               new ResultPair("gopher://", true),
+                               new ResultPair("iax://", true),
+                               new ResultPair("jabber://", true),
+                               new ResultPair("message://", true),
+                               new ResultPair("nih://", true),
+                               new ResultPair("ocf://", true),
+                               new ResultPair("palm://", true),
+                               new ResultPair("rtsp://", true),
+                               new ResultPair("shttp://", true),
+                               new ResultPair("tip://", true),
+                               new ResultPair("udp://", true),
+                               new ResultPair("vemmi://", true),
+                               new ResultPair("wss://", true),
+                               new ResultPair("xcon://", true),
+                               new ResultPair("ymsgr://", true)
+                               };
 
    ResultPair[] testUrlAuthority = {new ResultPair("www.google.com", true),
                                   new ResultPair("www.google.com.", true),
@@ -668,8 +693,28 @@ protected void setUp() {
                                   new ResultPair("aaa.", false),
                                   new ResultPair(".aaa", false),
                                   new ResultPair("aaa", false),
-                                  new ResultPair("", false)
-   };
+                                  new ResultPair("www.example.com", true),
+                                  new ResultPair("www.behidden.com", true),
+                                  new ResultPair("www.cbs.gov.il", true),
+                                  new ResultPair("www.duke.org", true),
+                                  new ResultPair("www.facebook.com", true),
+                                  new ResultPair("www.freenet.am", true),
+                                  new ResultPair("vimeo.com", true),
+                                  new ResultPair("www.fopea.org", true),
+                                  new ResultPair("www.nodal.am", true),
+                                  new ResultPair("www.thebubble.com", true),
+                                  new ResultPair("en.wiktionary.org", true),
+                                  new ResultPair("www.shoe.org", true),
+                                  new ResultPair("wikidata.org", true),
+                                  new ResultPair("www.ehow.com", true),
+                                  new ResultPair("depositfiles.com", true),
+                                  new ResultPair("www.earthrights.org", true),
+                                  new ResultPair("www.dvb.no", true),
+                                  new ResultPair("groups.yahoo.com", true),
+                                  new ResultPair("adb.org", true),
+                                  new ResultPair("www.abc.net.au", true)
+                                  };
+   
    ResultPair[] testUrlPort = {new ResultPair(":80", true),
                              new ResultPair(":65535", true), // max possible
                              new ResultPair(":65536", false), // max possible +1
@@ -678,8 +723,19 @@ protected void setUp() {
                              new ResultPair(":-1", false),
                              new ResultPair(":65636", false),
                              new ResultPair(":999999999999999999", false),
-                             new ResultPair(":65a", false)
-   };
+                             new ResultPair(":65a", false),
+                             new ResultPair(":21", true),  //ftp
+                             new ResultPair(":70", true),  //gopher
+                             new ResultPair(":443", true), //https, wws
+                             new ResultPair(":8080", true),
+                             new ResultPair(":8081", true),
+                             new ResultPair(":1", true),
+                             new ResultPair(":12345", true),
+                             new ResultPair(":10000", true),
+                             new ResultPair(":10001", true),
+                             new ResultPair(":65534", true)
+                             };
+   
    ResultPair[] testPath = {new ResultPair("/test1", true),
                           new ResultPair("/t123", true),
                           new ResultPair("/$23", true),
@@ -689,8 +745,19 @@ protected void setUp() {
                           new ResultPair("", true),
                           new ResultPair("/test1/file", true),
                           new ResultPair("/..//file", false),
-                          new ResultPair("/test1//file", false)
-   };
+                          new ResultPair("/test1//file", false),
+                          new ResultPair("/mydocuments/files", true),
+                          new ResultPair("/~myname/good", true),
+                          new ResultPair("/segment1/segment2", true),
+                          new ResultPair("/image-2", true),
+                          new ResultPair("/test/test/test", true),
+                          new ResultPair("/test/test/test/", true),
+                          new ResultPair("/test/test/", true),
+                          new ResultPair("/1/2/", true),
+                          new ResultPair("/1/2", true),
+                          new ResultPair("/1/2/3/4/5/6", true)
+                          };
+   
    //Test allow2slash, noFragment
    ResultPair[] testUrlPathOptions = {new ResultPair("/test1", true),
                                     new ResultPair("/t123", true),
@@ -707,12 +774,12 @@ protected void setUp() {
                                     new ResultPair("/..//file", false),
                                     new ResultPair("/test1//file", true),
                                     new ResultPair("/#/file", false)
-   };
+                                    };
 
    ResultPair[] testUrlQuery = {new ResultPair("?action=view", true),
                               new ResultPair("?action=edit&mode=up", true),
                               new ResultPair("", true)
-   };
+                              };
 
    Object[] testUrlParts = {testUrlScheme, testUrlAuthority, testUrlPort, testPath, testUrlQuery};
    Object[] testUrlPartsOptions = {testUrlScheme, testUrlAuthority, testUrlPort, testUrlPathOptions, testUrlQuery};
@@ -730,7 +797,32 @@ protected void setUp() {
                             new ResultPair("g0-to+.", true),
                             new ResultPair("not_valid", false), // underscore not allowed
                             new ResultPair("HtTp", true),
-                            new ResultPair("telnet", false)};
+                            new ResultPair("telnet", false)
+                            new ResultPair("ldap", true),
+                            new ResultPair("telnet", true),
+                            new ResultPair("afs", true),
+                            new ResultPair("amss", true),
+                            new ResultPair("blob", true),
+                            new ResultPair("chrome", true),
+                            new ResultPair("data", true),
+                            new ResultPair("example", true),
+                            new ResultPair("file", true),
+                            new ResultPair("gopher", true),
+                            new ResultPair("iax", true),
+                            new ResultPair("jabber", true),
+                            new ResultPair("message", true),
+                            new ResultPair("nih", true),
+                            new ResultPair("ocf", true),
+                            new ResultPair("palm", true),
+                            new ResultPair("rtsp", true),
+                            new ResultPair("shttp", true),
+                            new ResultPair("tip", true),
+                            new ResultPair("udp", true),
+                            new ResultPair("vemmi", true),
+                            new ResultPair("wss", true),
+                            new ResultPair("xcon", true),
+                            new ResultPair("ymsgr", true)
+                            };
 
 
 }
