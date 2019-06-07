@@ -27,6 +27,8 @@ public class UrlValidatorTest extends TestCase {
    private final boolean printStatus = false;
    private final boolean printIndex = false;//print index that indicates current scheme,host,port,path, query test were using.
 
+   private final static int MAX_TESTS = 10000;
+   
    public UrlValidatorTest(String testName) {
       super(testName);
    }
@@ -147,45 +149,42 @@ protected void setUp() {
    
    public void testRandomUrls()//eventually I will need parameters; tbd as developed
    {
-	    UrlValidator urlVal = new UrlValidator();		//for now only test with defaults; consider testing with options later
+	    //UrlValidator urlVal = new UrlValidator();		//with default constructor, the tester runs
+	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+	   //but with options, it doesn't --> just like testIsValid
 	    
 	    //check a common, known URL first
 	    assertTrue(urlVal.isValid("http://www.google.com"));
 	    assertTrue(urlVal.isValid("http://www.google.com/"));
 	    
-	    //Loop to test 10,000 random URLs CURRENTLY ONLY FIVE FOR RUNNING CODE DURING DEV
-	    for (int testIndex = 0; testIndex < 10000; ++testIndex) {
+	    //Loop to test 40,000 random URLs
+	    for (int testIndex = 0; testIndex < MAX_TESTS; ++testIndex) {
 	    	StringBuilder randomBuffer = new StringBuilder();
 	    	boolean expected = true;
 	    	
 	    	int randomIndex;
 	    	
-	    	/*NOTE TO SELF FOR IMPROVEMENT: the following is bad practice; really these arrays need
-	    	 * to get bundled up into a class that has a length member so the num elements of the
-	    	 * array can be initialized once and used all over, but in the interest of not
-	    	 * screwing over testIsValid, this workaround will do.*/
-	    	
-	    	/*QUESTION TO SELF: What stops us from making a new member of the UrlValidatorTest class
-	    	 * that is literally the number of elements of the arrays; I mean, testIsValid wouldn't
-	    	 * use them but it wouldn't bother it either...*/
-	    	//Pick random components from each set of ResultPairs
-	    	randomIndex = (int) (Math.random() * 8);					//9 elements; 0 - 8
+	    	/*DEV NOTE: The below is awful; it should be inside a loop; fix that
+	    	 * when understand Java enough to loop through an array of arrays 
+	    	 * which was declared as an array of Objects for some mysterious reason. 
+	    	 * (Why not use a ResultPair[][]?)*/
+	    	randomIndex = (int) (Math.random() * testUrlScheme.length);
 	    	randomBuffer.append(testUrlScheme[randomIndex].item);
 	    	expected &= testUrlScheme[randomIndex].valid;
 	    	
-	    	randomIndex = (int) (Math.random() * 20);					//20 elements; 0 - 19
+	    	randomIndex = (int) (Math.random() * testUrlAuthority.length);
 	    	randomBuffer.append(testUrlAuthority[randomIndex].item);
 	    	expected &= testUrlAuthority[randomIndex].valid;
 	    	
-	    	randomIndex = (int) (Math.random() * 9);					//9 elements; 0 - 8
+	    	randomIndex = (int) (Math.random() * testUrlPort.length);
 	    	randomBuffer.append(testUrlPort[randomIndex].item);
 	    	expected &= testUrlPort[randomIndex].valid;
 	    	
-	    	randomIndex = (int) (Math.random() * 10);					//10 elements; 0 - 9
+	    	randomIndex = (int) (Math.random() * testPath.length);
 	    	randomBuffer.append(testPath[randomIndex].item);
 	    	expected &= testPath[randomIndex].valid;
 	    	
-	    	randomIndex = (int) (Math.random() * 3);					//3 elements; 0 - 2
+	    	randomIndex = (int) (Math.random() * testUrlQuery.length);
 	    	randomBuffer.append(testUrlQuery[randomIndex].item);
 	    	expected &= testUrlQuery[randomIndex].valid;
 	    	
@@ -197,8 +196,9 @@ protected void setUp() {
 	    	else {
 	    		System.out.println("FAIL: " + url);
 	    	}
-	    	//ASSERT BREAKS EXECUTION; 
-	    	//assertEquals(url, expected, result);
+	    	//ASSERT BREAKS EXECUTION; uncomment to get details of only one failure;
+	    	//leave commented out to compare multiple failures
+	    	assertEquals(url, expected, result);
 	    }
 	    	
 	    
