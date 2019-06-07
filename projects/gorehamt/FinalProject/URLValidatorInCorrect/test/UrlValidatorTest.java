@@ -15,6 +15,10 @@
  * limitations under the License.
  */
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 import junit.framework.TestCase;
 
 /**
@@ -50,7 +54,8 @@ protected void setUp() {
 
         testIsValid(testUrlPartsOptions, options);
    }
-
+   
+   
    public void testIsValidScheme() {
       if (printStatus) {
          System.out.print("\n testIsValidScheme() ");
@@ -200,6 +205,50 @@ protected void setUp() {
 	    }
    }  
 
+   /* Name: testUrlsFromFile
+    * Description: Unit tests for Group Project, Part B
+    * This function will test the URLs in testUrls.txt. It will also test
+    * 5 invalid URLs that violate each piece of the URL format.
+    * Reference for how to read strings in from a file: 
+    * https://stackoverflow.com/questions/5343689/java-reading-a-file-into-an-arraylist
+    */
+   public void testUrlsFromFile() throws FileNotFoundException {
+	   Scanner s = new Scanner(new File("testUrls.txt"));
+	   while (s.hasNext()){
+		   UrlValidator urlValidator = new UrlValidator();
+		   String url = s.next();
+		   System.out.println(url);
+		   assertTrue(urlValidator.isValid(url));
+	   }
+	   s.close();
+	   
+	   //invalid scheme
+	   UrlValidator urlValidator1 = new UrlValidator();
+	   String url2 = "httpd://irangreenvoice.com/"; 
+	   assertFalse(urlValidator1.isValid(url2));
+	   
+	   //invalid authority
+	   UrlValidator urlValidator2 = new UrlValidator();
+	   String url3 = "https://aaa/foodiesfeed.com/"; 
+	   assertFalse(urlValidator2.isValid(url3));
+	   
+	   //invalid port
+	   UrlValidator urlValidator3 = new UrlValidator();
+	   String url4 = "https://www.facebook.com:65536"; 
+	   assertFalse(urlValidator3.isValid(url4));
+	   
+	   //invalid path, file path
+	   UrlValidator urlValidator4 = new UrlValidator();
+	   String url5 = "https://www.facebook.com:80/test1//file"; 
+	   assertFalse(urlValidator4.isValid(url5));
+	   
+	   //invalid query, space
+	   UrlValidator urlValidator5 = new UrlValidator();
+	   String url6 = "https://www.facebook.com?action =view"; 
+	   assertFalse(urlValidator5.isValid(url6));
+   }
+
+   
    public void testValidator202() {
        String[] schemes = {"http","https"};
        UrlValidator urlValidator = new UrlValidator(schemes, UrlValidator.NO_FRAGMENTS);

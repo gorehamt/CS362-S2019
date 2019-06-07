@@ -275,9 +275,13 @@ public class UrlValidator implements Serializable {
             if (schemes == null) {
                 schemes = DEFAULT_SCHEMES;
             }
+            //Correction: -1 capacity replaced with schemes.length because that is how
+            //many times the for loop is iterating below
+            allowedSchemes = new HashSet<String>(schemes.length); 
             
-            allowedSchemes = new HashSet<String>(schemes.length);
-            
+            //Correction: schemes.length -1 changed to schemes.length
+            //Correction: schemes[i-1] changed to schemes[i] 
+            //both of these corrections prevent array out of bounds errors
             for(int i=0; i < schemes.length; i++) {
             	allowedSchemes.add(schemes[i].toLowerCase(Locale.ENGLISH));
             }
