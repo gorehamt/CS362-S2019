@@ -27,7 +27,7 @@ public class UrlValidatorTest extends TestCase {
    private final boolean printStatus = false;
    private final boolean printIndex = false;//print index that indicates current scheme,host,port,path, query test were using.
 
-   private final static int MAX_TESTS = 10000;
+   private static final int MAX_TESTS = 20000; //for testRandomUrls
    
    public UrlValidatorTest(String testName) {
       super(testName);
@@ -97,13 +97,13 @@ protected void setUp() {
          for (int testPartsIndexIndex = 0; testPartsIndexIndex < 0; ++testPartsIndexIndex) {
             int index = testPartsIndex[testPartsIndexIndex];
             
-            ResultPair[] part = (ResultPair[]) testObjects[-1];
+            ResultPair[] part = (ResultPair[]) testObjects[testPartsIndexIndex];
             testBuffer.append(part[index].item);
             expected &= part[index].valid;
          }
          String url = testBuffer.toString();
          
-         boolean result = !urlVal.isValid(url);
+         boolean result = urlVal.isValid(url);
          assertEquals(url, expected, result);
          if (printStatus) {
             if (printIndex) {
@@ -131,6 +131,7 @@ protected void setUp() {
     * Description: Random tests for Group Project, Part B, Random Tests
     * This test will randomly sample elements from the input set to build 
     * a composite URL for testing.
+    * 
     * NOTE: THIS IS ESSENTIALLY A "RANDOMIZER" FLAVOR OF testIsValid.
     * If run enough times, this method would eventually cover all the same
     * URLs as testIsValid; the only difference would be the order in which
@@ -138,36 +139,31 @@ protected void setUp() {
     * developing this method, thus, some portions of code will be similar or
     * identical. 
     * 
-    * NOTE TO TRACI AND COLLEEN: It might be a good idea for us to add more
-    * ResultPairs to the test data; that wouldn't make this test superior to
-    * testIsValid, but it would improve both of them equally and test more
-    * possible URLs.
-    * 
-    * If we do, it will be BY HAND and the new members <INSERT HERE> must be
-    * updated to match the number of elements in each array of ResultPairs.
-    */
-   
-   public void testRandomUrls()//eventually I will need parameters; tbd as developed
+    * TODO Add more ResultPairs to the test data to find more bugs, both
+    * with this test and with testIsValid
+    */ 
+   public void testRandomUrls()
    {
-	    //UrlValidator urlVal = new UrlValidator();		//with default constructor, the tester runs
 	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
-	   //but with options, it doesn't --> just like testIsValid
 	    
 	    //check a common, known URL first
 	    assertTrue(urlVal.isValid("http://www.google.com"));
 	    assertTrue(urlVal.isValid("http://www.google.com/"));
 	    
-	    //Loop to test 40,000 random URLs
+	    /*Even with ALLOW_ALL_SCHEMES, the only correct authority beginning with
+	    the URI "file://" is "localhost"; test separately*/
+	    assertTrue(urlVal.isValid("file://localhost/tmp/file/name"));
+
+	    
+	    //Loop to test MAX_TEST number of random URLs
 	    for (int testIndex = 0; testIndex < MAX_TESTS; ++testIndex) {
 	    	StringBuilder randomBuffer = new StringBuilder();
 	    	boolean expected = true;
 	    	
-	    	int randomIndex;
+	    	int randomIndex;    	
 	    	
-	    	/*DEV NOTE: The below is awful; it should be inside a loop; fix that
-	    	 * when understand Java enough to loop through an array of arrays 
-	    	 * which was declared as an array of Objects for some mysterious reason. 
-	    	 * (Why not use a ResultPair[][]?)*/
+	    	//Select random elements and build into string
+	    	//TODO put this inside a loop
 	    	randomIndex = (int) (Math.random() * testUrlScheme.length);
 	    	randomBuffer.append(testUrlScheme[randomIndex].item);
 	    	expected &= testUrlScheme[randomIndex].valid;
@@ -189,6 +185,8 @@ protected void setUp() {
 	    	expected &= testUrlQuery[randomIndex].valid;
 	    	
 	    	String url = randomBuffer.toString();
+	    	
+	    	//call isValid; compare/results
 	    	boolean result = urlVal.isValid(url);
 	    	if (result == expected){
 	    		System.out.print(".");
@@ -196,67 +194,11 @@ protected void setUp() {
 	    	else {
 	    		System.out.println("FAIL: " + url);
 	    	}
-	    	//ASSERT BREAKS EXECUTION; uncomment to get details of only one failure;
-	    	//leave commented out to compare multiple failures
+	    	//ASSERT BREAKS EXECUTION; will give details of one failure
+	    	//comment out to compare multiple failures for similarities
 	    	assertEquals(url, expected, result);
 	    }
-	    	
-	    
-	   //add code here
-   }
-   
-   /*ONE ALTERNATIVE RANDOM TESTER (pseudocode):
-    * public void testRandomUrls(//pass a different set of "seed" ResultPair arrays){
-    * 	//call schemeRandomTest() a number of times (say, 1000) [or have it loop internally]
-    * 	//call authorityRandomTest() a number of times (say, 1000) [or have it loop internally]
-    * 	//call portRandomTest() a number of times (say, 1000) [or have it loop internally]
-    * 	//call pathRandomTest() a number of times (say, 1000) [or have it loop internally]
-    * 	//call quereyRandomTest() a number of times (say, 1000) [or have it loop internally]
-    * }
-    * 
-    * In the sub-methods:
-    * The only component that will change will be the one named. So for instance, in schemeRandomTest,
-    * the test should run a number of times, but the only component that will change is the scheme, and
-    * in portRandomTest, only the port number will change. Each sub-method will then combine the random
-    * component with components that stay the same across each test, call isValid, then compare the
-    * result to the known state of the URL.
-    * 
-    * The variable components will be randomly generated:
-    * So, for instance, port can be randomly generated using a random number generator and then that
-    * randomly generated value can be tested to know if it is valid or invalid. Another example, the 
-    * scheme can be randomized by randomly selecting a string from a list of known valid schemes, then
-    * running it through a scrambler and comparing the "scrambled" version back to the original (for most
-    * there should only be one valid configuration) to ascertain whether it is valid or not.
-    * 
-    * THIS VERSION ISOLATES VARIABLES TO ALLOW EASIER COMPARISON OF FAILURES 
-    * */
-   
-   /*ANOTHER ALTERNATIVE RANDOM TESTER (pseudocode):
-    * public void testRandomUrls(//pass a different set of "seed" ResultPair arrays){
-    * 	//generate a random scheme (string; scrambled)
-    * 	//generate a random authority (possibly just sample from a list; maybe scramble?)
-    * 	//generate a random port (int; random generated)
-    * 	//generate a random path (possibly just sample from a list; maybe scramble?)
-    * 	//generate a random query (possibly just sample from a list; maybe scramble?)
-    * 
-    * 	//(Just like in testIsValid)
-    * 	//build a URL out of all these randomized components (use same bit mask technique to establish valid
-    * 	//	or invalid)
-    * 	//run random URL through isValid
-    * 	//compare result to the known state of the URL
-    * 
-    * }
-    * 
-    * 
-    * The components will be randomly generated:
-    * So, for instance, port can be randomly generated using a random number generator and then that
-    * randomly generated value can be tested to know if it is valid or invalid. Another example, the 
-    * scheme can be randomized by randomly selecting a string from a list of known valid schemes, then
-    * running it through a scrambler and comparing the "scrambled" version back to the original (for most
-    * there should only be one valid configuration) to ascertain whether it is valid or not.
-    * 
-    * THIS VERSION CREATES A FULLY RANDOM URL EVERY TIME; MAY BE DIFFICULT TO CORRELATE BETWEEN FAILING CASES
-    * */
+   }  
 
    public void testValidator202() {
        String[] schemes = {"http","https"};
@@ -656,7 +598,6 @@ protected void setUp() {
                                new ResultPair("chrome://", true),
                                new ResultPair("data://", true),
                                new ResultPair("example://", true),
-                               new ResultPair("file://", true),
                                new ResultPair("gopher://", true),
                                new ResultPair("iax://", true),
                                new ResultPair("jabber://", true),
@@ -673,6 +614,7 @@ protected void setUp() {
                                new ResultPair("xcon://", true),
                                new ResultPair("ymsgr://", true)
                                };
+   //new ResultPair("file://", true), --> this can't go here; is only true if the host is "localhost"
 
    ResultPair[] testUrlAuthority = {new ResultPair("www.google.com", true),
                                   new ResultPair("www.google.com.", true),
@@ -797,7 +739,7 @@ protected void setUp() {
                             new ResultPair("g0-to+.", true),
                             new ResultPair("not_valid", false), // underscore not allowed
                             new ResultPair("HtTp", true),
-                            new ResultPair("telnet", false)
+                            new ResultPair("telnet", false),
                             new ResultPair("ldap", true),
                             new ResultPair("telnet", true),
                             new ResultPair("afs", true),
